@@ -1,0 +1,90 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--large hero--has-gradient"{% if post.get_thumbnail %} style="background-image:url('{{ fn('bsd_getImage', post.get_field('masthead'), 'page-masthead', post.thumbnail) }}');"{% endif %}>
+    <div class="hero__inner">
+      <h1 class="hero__big-title">{{post.title}}</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+	<section class="page-section page-section--{{ post.post_name }}">
+		<div class="page-section__inner">
+			<div class="page-section__content">
+				{{ post.content }}
+			</div>
+
+			<div class="page-section__content food-menu">
+
+				<header class="food-menu__main-header">
+					<div class="grid-ng-center">
+						<div class="grid__col-ng-6 food-menu__info">
+							<div class="food-menu__info-inner">
+								<div class="food-menu__info-logo">
+                  {% if restaurant.logo %}
+                    <img src="{{ fn('getImage', restaurant.logo, 'thumbnail-nocrop') }}" alt="{{ restaurant.name }}">
+                  {% endif %}
+								</div>
+								<div class="food-menu__info-text">
+									<p>{{ restaurant.description }}</p>
+								</div>
+							</div>
+						</div>
+						<div class="grid__col-ng-6 food-menu__legend-wrapper">
+
+							<form method="get" class="page--location-selector">
+								{# @TODO: JAVASCRIPTIVIZE #}
+								<select name="switch">
+										<option disabled>View Menu for Another Location</option>
+									{% for location in availableLocations %}
+										<option value="{{ location.slug }}" {{ location.active }}>{{ location.title }}</option>
+									{% endfor %}
+								</select>
+								<button class="btn btn--small">View Location</button>
+							</form>
+
+							{% if menu.sections %}
+								{% include 'partials/menu/legend.twig' %}
+							{% endif %}
+						</div>
+					</div>
+				</header>
+
+				{% for section in menu.sections %}
+					<div class="accordion__item food-menu__group">
+						<header class="accordion__header food-menu__header">
+							<h3>{{ section.header.0.name }}</h3> <i aria-hidden="true"></i>
+						</header>
+						<div class="accordion__content food-menu__item-group">
+              <div class="food-menu__item-group-summary">
+                {{ section.description }}
+              </div>
+
+              {% include 'partials/menu/food-items.twig' with {'menu_items' : section.menu_items} %}
+
+							{% for subSection in section.subSections %}
+								<div class="food-menu__dividing-title">
+									<h3>{{ subSection.header.0.name }}</h3>
+								</div>
+								<div class="food-menu__item-group-summary">
+									{{ subSection.description }}
+								</div>
+
+								{% include 'partials/menu/food-items.twig' with {'menu_items' : subSection.menu_items} %}
+
+							{% endfor %}
+
+						</div>
+          </div> <!-- .food-menu__group -->
+        {% else %}
+          <div class="accordion__item food-menu__group food-menu-missing">
+            <h3>{{ currentLocation.name }} does not currently have an available food menu</h3>
+            <p>Please select a different location from the dropdown above to see their selections.</p>
+          </div>
+				{% endfor %}
+      </div> <!-- .food-menu -->
+
+		</div>
+	</section>
+{% endblock %}

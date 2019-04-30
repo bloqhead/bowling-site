@@ -1,0 +1,309 @@
+//
+// Hero
+//
+
+.hero {
+  padding: 67px 0;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+
+  p {
+    margin: 25px 0 40px 0;
+    padding: 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    &.hero__blurb {
+      margin-top: 45px;
+    }
+  }
+}
+
+.hero--has-gradient,
+.hero--has-overlay {
+  position: relative;
+  overflow: hidden;
+
+  > .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
+}
+
+.hero--has-gradient {
+
+  &:after {
+    background: linear-gradient(0deg, rgba(#000, 0.7) 0%, rgba(#000, 0.15) 100%);
+  }
+}
+
+.hero--has-overlay {
+
+  &:after {
+    background-color: rgba(#000, 0.7);
+  }
+}
+
+.hero--large {
+
+  // target large hero that has no background
+  // (they should not be left blank but I account for every unknown)
+  &:not([style*="background-image"]) {
+    padding: 100px 0;
+
+    .hero__title,
+    .hero__big-title,
+    .hero__sub-title {
+      color: $charcoal;
+      text-shadow: none;
+    }
+  }
+}
+
+.hero--blue-burst {
+  background-image: url('assets/img/sunburst@2x.png');
+  text-align: center !important;
+}
+
+.hero__inner {
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+.hero__title,
+.hero__big-title {
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 2px 3px rgba(#000, 0.5);
+}
+
+.hero__big-title,
+.hero__sub-title {
+  margin: 0 0 10px 0;
+}
+
+.hero__sub-title {
+  color: $yellow;
+  font-size: 17px;
+}
+
+.hero__title {
+  color: #fff;
+}
+
+.hero__title--dark {
+  color: $charcoal;
+  text-shadow: none;
+}
+
+.hero__big-title {
+  color: #fff;
+}
+
+.hero__floater {
+  display: none;
+}
+
+// Hero background video
+
+.hero-video-container {
+  display: none !important;
+  overflow: none;
+}
+
+.hero-video {
+  width: 0;
+  height: 0;
+}
+
+.hero__location-notice {
+  display: inline-block;
+  padding: 5px 10px !important;
+  margin: 0 !important;
+  color: #fff;
+  background-color: rgba(#000, 0.5);
+  border-radius: $base-radius;
+
+  strong, span, a {
+    color: $yellow;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  i {
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(#fff, 0.5);
+  }
+
+  &:not(.hero__location-notice--no-bg) {
+    font-size: 13px;
+  }
+}
+
+.hero__location-notice--no-bg {
+  background: none;
+  padding: 0 !important;
+}
+
+// Post info in hero
+
+.hero {
+
+  .post__meta {
+    display: inline-block;
+    background-color: $charcoal;
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 3px;
+    box-shadow: 0 2px 20px 0 rgba(#000, 0.5);
+    color: #fff;
+    font-size: 14px;
+
+    a {
+
+      &:link, &:visited, &:hover, &:active, &:focus {
+        color: inherit;
+        font-weight: inherit;
+        cursor: default;
+      }
+    }
+  }
+
+  .posted-on {
+
+  }
+
+  .byline {
+    display: none;
+  }
+}
+
+@media (max-width: $max-width) {
+  .hero--has-gradient,
+  .hero--has-overlay {
+
+    > .hero__inner {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+@media ($bp-medium) {
+  .hero {
+    padding: 100px 0;
+    text-align: left;
+  }
+
+  .hero--reduced {
+    padding: 50px 0;
+  }
+
+  .hero--large {
+    padding: 270px 0 72px 0;
+  }
+
+  .hero__title {
+    font-size: 61px;
+    line-height: 70px;
+  }
+
+  .hero__sub-title {
+    font-size: 23px;
+  }
+
+  .hero__big-title {
+    font-size: 86px;
+    line-height: 90px;
+    max-width: 90%; // prevents long titles from clashing with the sidebar
+  }
+
+  .hero__floater-container {
+    position: relative;
+  }
+
+  .hero__floater {
+    display: block;
+    position: absolute;
+    // max-width: 55%;
+  }
+
+  .hero-video-container {
+    display: block !important;
+  }
+
+  .hero-video {
+    position: absolute;
+    right: 0; bottom: 0;
+    z-index: 0;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  // 'better birthday' floating hero image
+  .better-birthday .hero__floater {
+    bottom: 0; 
+    left: 0;
+    width: 51%;
+    height: auto;
+  }
+
+  // 'have fun' floating hero image
+  .have-fun .hero__floater {
+    bottom: 0;
+    right: 0;
+    width: 51%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1800px) {
+  .hero__floater-container {
+    padding: 130px 0;
+  }
+
+  .better-birthday .hero__floater {
+    height: 546px;
+    width: auto;
+  }
+
+  .have-fun .hero__floater {
+    width: auto;
+    height: 632px;
+  }
+}
+
+@media (min-width: 2100px) {
+  .hero__floater-container {
+    padding: 155px 0;
+  }
+
+  .better-birthday .hero__floater {
+    height: 596px;
+  }
+
+  .have-fun .hero__floater {
+    height: 700px;
+  }
+}

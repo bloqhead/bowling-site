@@ -1,0 +1,55 @@
+<div class="{{ packageColumnClass }} shift-down package-details package-details--expandable">
+
+    <div class="card card--media">
+        <div class="card__inner">
+            <header class="card__header">
+                <h4 class="card__utility-title">
+                    {{ package.public_title }}
+                </h4>
+            </header>
+            <div class="card__content flexit--mobile flexit--col-reverse" data-mh="package-columns">
+
+                <div class="grid-ng-stretch">
+                    {% include 'partials/packages/list-features-primary.twig' %}
+                </div>
+
+                <div class="grid__col-4 birthday-package-price">
+                    {% for cost_item in package.get_field('price') %}
+                        {% set cost_split = cost_item.cost|split('.') %}
+                        {% set dollars = cost_split[0] %}
+                        {% set cents = cost_split[1] %}
+                        <div class="price-standard">
+                            <div class="price-standard__inner">
+                                <p class="price-standard__cost">
+                                    {{dollars}}<sup>{{cents}}</sup>
+                                </p>
+                                <p class="price-standard__breakdown">{{ cost_item.per }}</p>
+                                <p class="price-minimum">{{ cost_item.note }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                    {% if package.link_booking %}
+                        <a class="btn btn--alt btn--large btn--block" href="{{ package.link_booking }}">Book Now!</a>
+                        <p class="package-availability">{{ currentLocation.title }}</p>
+                    {% else %}
+                        <a class="btn btn--alt btn--block" href="tel:{{ defaultPhone|apply_filters('phone_href') }}">
+                            Call Now to Book! <i class="fas fa-arrow-right"></i>
+                        </a>
+                    {% endif %}
+                </div>
+
+            </div> <!-- .card__content -->
+
+            <footer class="card__footer">
+                <input type="checkbox" class="birthday__expand-trigger">
+                <div class="birthday__expand-content">
+                    <div class="birthday__expand-inner">
+                        {% include 'partials/packages/list-features-other.twig' %}
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div> <!-- .card -->
+</div>

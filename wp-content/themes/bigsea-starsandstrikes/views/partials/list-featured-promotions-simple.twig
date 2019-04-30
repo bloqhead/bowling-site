@@ -1,0 +1,16 @@
+<ul class="article-list">
+{% if hasPromotions %}
+{% for current in featuredPromotions %}
+  <li class="article-list__item">
+    <a class="article-list__link" href="{{ current.link }}">
+      <h3 class="article-list__title">{{ current.title }}</h3>
+    </a>
+  </li>
+{% else %}
+  <li class="article-list__item">
+    <h3 class="article-list__title">No Featured Promotions found for {{ locationName }}</h3>
+    <p>Please check back again soon!</p>
+  </li>
+{% endfor %}
+{% endif %}
+</ul>

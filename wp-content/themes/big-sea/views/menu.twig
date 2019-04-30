@@ -1,0 +1,13 @@
+{% if main_menu %}
+	<button class="menu-toggle" aria-controls="{{main_menu.slug}}" aria-expanded="false">
+		{{ __( 'Primary Menu', 'big-sea' ) }}
+	</button>
+	<ul class="menu main-menu" id="{{main_menu.slug}}">
+	{% for item in main_menu.get_items %}
+		<li class="{{item.classes | join(' ')}}{% if item.get_children %} has-dropdown{% endif %}">
+			<a href="{{item.get_link}}">{{item.title}}</a>
+			{% include "menu.twig" with { 'main_menu': item.get_children } %}
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}

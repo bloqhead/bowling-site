@@ -1,0 +1,107 @@
+//
+// 404
+//
+
+$error-404-padding: 20px !default;
+$error-404-input-height: 75px !default;
+
+body.error404 {
+
+  .hero {
+    background-image: url("assets/img/404-gutterball.jpg");
+  }
+
+  &, &.has-sidebar {
+    @include full-width-content;
+
+    #content {
+      max-width: calc(#{$max-width} + #{$error-404-padding});
+      margin: 0 auto;
+      padding: ($error-404-padding * 3) $error-404-padding;
+    }
+  }
+
+  .four-oh-four__lined-title {
+    margin: ($error-404-padding * 2) 0;
+
+    h3 {
+      @include fancy-title(
+        $bg: $slate-blue,
+        $scaleAdjust: 0.98,
+        $translateAdjust: 25px
+      );
+    }
+  }
+
+  .four-oh-four__intro {
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+
+    h1 {
+
+    }
+
+    p {
+
+    }
+  }
+
+  .four-oh-four__search {
+
+  }
+
+  .search-form {
+    display: flex;
+    align-items: space-between;
+    justify-content: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
+      border-radius: $base-radius 0 0 $base-radius;
+      font-size: 24px;
+    }
+
+    input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+    .search-field, .search-submit {
+      height: $error-404-input-height;
+      max-height: $error-404-input-height;
+      line-height: $error-404-input-height;
+    }
+
+    .search-field {
+      flex: 0 0 2;
+    }
+
+    .search-submit {
+      flex: 0 0 1;
+      padding-top: 0;
+      padding-bottom: 0;
+      border-radius: 0 $base-radius $base-radius 0;
+    }
+  }
+}
+
+@media ($bp-medium) {
+  body.error404 {
+
+    &, &.has-sidebar {
+
+      #content {
+        padding: ($error-404-padding * 5) $error-404-padding;
+      }
+    }
+
+    .four-oh-four__intro {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    .search-form {
+      margin-top: $error-404-padding * 2;
+      margin-bottom: $error-404-padding * 2;
+    }
+  }
+}

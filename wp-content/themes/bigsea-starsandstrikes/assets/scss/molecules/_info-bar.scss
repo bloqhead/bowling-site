@@ -1,0 +1,56 @@
+//
+// Info bar
+//
+
+.info-bar {
+  @include rounded-bar-style;
+  @include cleartext;
+  padding: 23px;
+  text-shadow: 0 1px 2px rgba(#000, 0.2);
+}
+
+.info-bar__utility-title {
+  color: $yellow;
+  font-family: $open-sans;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.info-bar__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-bar__title {
+  margin: 0;
+}
+
+.info-bar__extra {
+  margin: 0;
+}
+
+.info-bar__sub-title {
+
+  h3 {
+    margin: 0;
+  }
+}
+
+@media ($bp-medium) {
+  .info-bar__sub-title {
+    display: flex;
+    align-items: space-between;
+
+    h3 {
+      width: 65%;
+      margin: 0 0 20px 0;
+    }
+
+    .info-bar__extra {
+      width: calc(35% - 20px);
+      text-align: right;
+    }
+  }
+}

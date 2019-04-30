@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{# save the query as a var #}
+{% set search_query = fn('get_search_query') %}
+
+{% block content %}
+  {% if posts %}
+
+    <h1>Results for &quot;{{ search_query|escape }}&quot;</h1>
+    {% for post in posts %}
+      {% include ["partials/teaser-search.twig", "partials/teaser.twig"] %}
+    {% endfor %}
+
+    {% include "partials/pagination.twig" %}
+
+  {% else %}
+
+    <h1>No results for &quot;{{ search_query|escape }}&quot;</h1>
+
+  {% endif %}
+{% endblock %}

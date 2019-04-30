@@ -1,0 +1,51 @@
+<div class="package-details">
+
+        <div class="card card--media">
+            <div class="card__inner">
+                <header class="card__header">
+                    <h4 class="card__utility-title">
+                        {{ package.public_title }}
+                    </h4>
+                </header>
+                <div class="card__content">
+
+                    <div class="grid-ng-stretch">
+
+                        {% include 'partials/packages/list-features-primary.twig' %}
+
+                        {% include 'partials/packages/list-features-other.twig' %}
+
+                    </div>
+
+                    <div class="grid__col-stretch birthday-package-price">
+                        {% for cost_item in package.get_field('price') %}
+                            {% set cost_split = cost_item.cost|split('.') %}
+                            {% set dollars = cost_split[0] %}
+                            {% set cents = cost_split[1] %}
+                            <div class="price-standard">
+                                <div class="price-standard__inner">
+                                    <p class="price-standard__cost">
+                                        {{dollars}}<sup>{{cents}}</sup>
+                                    </p>
+                                    <p class="price-standard__breakdown">{{ cost_item.per }}</p>
+                                    <p class="price-minimum">{{ cost_item.note }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        {% if package.link_booking %}
+                            <a class="btn btn--has-icon" href="{{ package.link_booking }}">
+                                Book Now! <i class="fas fa-arrow-right"></i>
+                            </a>
+                        {% else %}
+                            <a class="btn btn--has-icon" href="tel:{{ defaultPhone|apply_filters('phone_href') }}">
+                                Call Now to Book! <i class="fas fa-arrow-right"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div> <!-- .card__content -->
+
+            </div>
+        </div> <!-- .card -->
+    </div>

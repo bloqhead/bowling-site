@@ -1,0 +1,7 @@
+<ul class="food-menu__item-additions">
+  {% for addon in addons %}
+    <li>
+      <em>{{ addon.name|apply_filters('render_icons') }}</em>
+    </li>
+  {% endfor %}
+</ul>

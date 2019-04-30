@@ -1,0 +1,104 @@
+//
+// Pagination
+//
+
+$pagination-color-1: $slate-blue !default;
+$pagination-color-2: $light-navy !default;
+
+.pagination {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 50px 0;
+  @include cleartext;
+
+  i {
+    transform: translate(0,0) !important;
+  }
+
+  @media ($bp-medium) {
+    font-size: 28px;
+  }
+}
+
+.pagination__pages {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  @include resetlist;
+
+  li {
+    flex: auto;
+    margin: 0 12px;
+
+    &:before, &:after {
+      display: none !important;
+    }
+  }
+}
+
+.pagination-item {
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+
+  &:not(.pagination-item--prev):not(.pagination-item--next) {
+    $pad-lr: 10px;
+    $pad-tb: 2px;
+    $dims: 52px;
+    display: inline-block;
+    border-radius: 100%;
+    padding: $pad-tb $pad-lr;
+    width: $dims;
+    height: $dims;
+    line-height: $dims - ( $pad-tb * 2 ); // compensates for the padding
+  }
+
+  &:not(.pagination-item--prev):not(.pagination-item--next):not(.pagination-item--current) {
+
+    &, &:visited, &:active, &:focus {
+      color: $pagination-color-1;
+    }
+
+    &:hover {
+      color: $pagination-color-2;
+    }
+  }
+
+  &--prev, &--next {
+
+    &, &:visited {
+      color: $pagination-color-1;
+    }
+
+    &:hover, &:active, &:focus {
+      color: $pagination-color-2;
+    }
+
+    i {
+      font-size: 36px;
+      transform: translateY(-2px);
+    }
+  }
+
+  &--prev {
+    margin-right: 20px;
+  }
+
+  &--next {
+    margin-left: 20px;
+  }
+
+  &--current {
+    background-color: $pagination-color-1;
+    color: #fff;
+  }
+
+  &.dots {
+    border-radius: 0;
+    width: auto;
+    height: auto;
+  }
+}

@@ -1,0 +1,65 @@
+//
+// Comment
+// 
+
+$comment-bottom-border: 2px solid $gray-medium !default;
+$comment-margin: 0 0 25px 0 !default;
+$comment-padding: 20px !default;
+$comment-font-size: 16px !default;
+$comment-line-height: 1.5 !default;
+$comment-section-title-font-size: 24px !default;
+$comment-section-title-margin: 0 0 20px 0 !default;
+$comment-area-margin: 20px 0 0 0 !default;
+$comment-area-top-border: 2px solid $gray-medium !default;
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comments-area {
+  margin: $comment-area-margin;
+  border-top: $comment-area-top-border;
+}
+
+.comments-title {
+  font-size: $comment-section-title-font-size;
+  margin: $comment-section-title-margin;
+}
+
+.comment__author {
+  margin: 0;
+  padding: 0;
+}
+
+.comment {
+  display: block;
+  border-bottom: $comment-bottom-border;
+  margin: $comment-margin;
+  padding: $comment-padding;
+  font-size: $comment-font-size;
+  line-height: $comment-line-height;
+}
+
+.comment__content {
+
+}
+
+.comment-respond {
+
+  .logged-in-as {
+
+    a {
+  
+    }
+  }
+  
+  .comment-form-comment {
+  
+  }
+  
+  .form-submit {
+    
+  }
+}

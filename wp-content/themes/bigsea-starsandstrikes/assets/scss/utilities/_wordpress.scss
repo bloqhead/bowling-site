@@ -1,0 +1,61 @@
+//
+// WordPress-generated classes
+//
+
+// alignment
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone {
+	clear: both;
+	display: block;
+	float: none;
+	margin: 12px auto;
+}
+
+// captions
+.wp-caption {
+	padding: 20px;
+	background-color: $gray;
+}
+
+.wp-caption-text {
+	font-size: 75%;
+	text-align: center;
+}
+
+// post meta
+.post__meta {
+  border-bottom: 1px solid $gray-medium;
+  padding: 20px 0;
+  margin: 0 0 20px 0;
+
+  a {
+
+    &, &:link, &:visited, &:hover, &:active, &:focus {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+@media ($bp-medium) {
+	.alignleft {
+		display: inline;
+		float: left;
+		margin: 0 1.5em 1.5em 0;
+	}
+
+	.alignright {
+		display: inline;
+		float: right;
+		margin: 0 0 1.5em 1.5em;
+	}
+
+	.aligncenter {
+		clear: both;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

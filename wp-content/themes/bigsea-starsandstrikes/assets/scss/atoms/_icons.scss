@@ -1,0 +1,149 @@
+//
+// Icons
+//
+
+// Custom icons
+
+[data-icon]:before {
+  font-family: "stars-strikes" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="ss-icon-"]:before,
+[class*=" ss-icon-"]:before {
+  font-family: "stars-strikes" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ss-icon-arcade:before {
+  content: "\63";
+}
+.ss-icon-bowling:before {
+  content: "\65";
+}
+.ss-icon-bumper-car:before {
+  content: "\62";
+}
+.ss-icon-laser-tag:before {
+  content: "\64";
+}
+.ss-icon-chefs-choice:before {
+  content: "\67";
+}
+.ss-icon-gluten-free:before {
+  content: "\61";
+}
+.ss-icon-health-advisory:before {
+  content: "\66";
+}
+.ss-icon-healthy-choice:before {
+  content: "\68";
+}
+.ss-icon-hot-spicy:before {
+  content: "\69";
+}
+.ss-icon-food:before {
+  content: "\6a";
+}
+.ss-icon-escape:before,
+.ss-icon-escape-alt:before {
+  content: "\6b";
+}
+.ss-icon-virtual-reality:before {
+  content: "\6c";
+}
+
+// alias to the clock icon in Font Awesome
+.ss-icon-clock {
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: 400;
+
+  &:before {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    content: "\f017";
+  }
+}
+
+// Social icons
+
+.social-icons {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+
+  li {
+    display: block;
+    margin: 0 0 25px 0;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+}
+
+.social-icons a,
+.social-icons__link {
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 100%;
+  border: 1px solid $light-navy;
+  color: $light-navy;
+  transition: $base-transition;
+  transition-delay: 0;
+
+  &:hover, &:active, &:focus {
+
+    &, i {
+      color: $yellow !important;
+      border-color: $yellow !important;
+    }
+  }
+
+  &:hover {
+
+    i {
+      transform: translate(0,0) !important;
+    }
+  }
+}
+
+// for when they are placed on a dark background
+.social-icons--light {
+
+  a, .social-icons__link {
+    border-color: white;
+    color: white;
+  }
+}
+
+.social-icons--inline {
+
+  li {
+    display: inline;
+    margin: 0 25px 0 0;
+  }
+
+  a, .social-icons__link {
+    display: inline-block;
+  }
+}

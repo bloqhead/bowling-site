@@ -1,0 +1,16 @@
+<form method="get" action="#section-packages" class="page--location-selector">
+  {# TODO: JAVASCRIPTIVIZE #}
+  <fieldset>
+    <legend>Choose Your Party Package at {{ currentLocation.title }}</legend>
+    <p>Interested in packages available at other locations? Change the location below</p>
+    <div class="form-flex">
+      <select name="switch">
+        <option disabled>View Packages for Another Location</option>
+        {% for location in availableLocations %}
+          <option value="{{ location.slug }}" {{ location.active }}>{{ location.title }}</option>
+        {% endfor %}
+      </select>
+      <button>Change Location</button>
+    </div>
+  </fieldset>
+</form> <!-- .page--location-selector -->

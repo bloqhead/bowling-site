@@ -1,0 +1,64 @@
+{# Placed here for testing right now #}
+{# {% include "views/partials/location-selector-affixed.twig" %} #}
+
+<div class="top-bar" id="navigation">
+  <div class="inner">
+
+    <a href="{{site.url}}" class="logo-link">
+      <img src="{{theme.link}}/assets/img/logo.png" alt="{{site.name}} Logo" class="logo desktop-only">
+      <img src="{{theme.link}}/assets/img/logo-mobile.png" alt="{{site.name}} Logo" class="logo mobile-only">
+      <h1 class="sr-only">{{site.name}}</h1>
+    </a> <!-- .logo-link -->
+
+    <a href="#" class="hamburger hamburger--spring js-hamburger mobile-only">
+      <div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+      </div>
+    </a> <!-- .hamburger -->
+
+    <div class="menu-container">
+      {% include "menu.twig" with { 'items': main_menu.get_items, 'menu_id': main_menu.menu_id } %}
+      <div class="mobile-only mobile-cta-buttons">
+        {% include "partials/booking-action-buttons.twig" %}
+        {% include "footer.twig" %}
+      </div>
+    </div>
+
+  </div> <!-- .inner -->
+</div> <!-- .top-bar -->
+
+<div class="menu-bar">
+  <div class="inner">
+
+    <ul class="menu menu--secondary">
+      <li><a href="https://recruiting.talentreef.com/stars-and-strikes" target="_blank">Careers</a></li>
+      <li><a href="{{ selectedLocation.get_field('external_link_lanes') }}">Reserve A Lane</a></li>
+      <li><a href="{{ birthdayPackageAnchor }}">Book A Party</a></li>
+    </ul> <!-- .menu - secondary -->
+
+    <ul class="menu menu--information mobile-only">
+      <li><a href="{{ fn('googleMapsLink', selectedLocation.get_field('address')) }}" target="_blank">Directions</a></li>
+      <li><a href="tel:{{ selectedLocation.get_field('phone_number')|apply_filters('phone_href') }}">Call</a></li>
+    </ul> <!-- .menu - mobile only -->
+
+    <ul class="menu menu--user-actions">
+      <li>
+        <a href="{{ fn('get_permalink', selectedLocation.ID) }}" class="user-actions__location">
+          <i class="fas fa-map-marker no-transform"></i> <span>{{ selectedLocation.name }}</span>
+        </a>
+      </li>
+      <li class="affixed-location-selector__tooltip-container">
+        <a href="{{ locationSelectorPage }}" class="btn btn--smaller user-actions__desktop-selector">Change Location</a>
+        <a href="{{ locationSelectorPage }}" class="user-actions__mobile-selector">
+          <i class="far fa-angle-down no-transform"></i> Change
+        </a>
+
+        <div class="affixed-location-selector__tooltip">
+          {% include "partials/affixed-locations-selector.twig" %}
+        </div> <!-- .affixed-location-selector__tooltip -->
+
+      </li>
+    </ul> <!-- .user-actions -->
+
+  </div> <!-- .inner -->
+</div>

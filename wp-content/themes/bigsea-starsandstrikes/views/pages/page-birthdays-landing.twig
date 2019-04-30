@@ -1,0 +1,71 @@
+{% extends "base.twig" %}
+
+{% block header %}
+	{% include "site-header-simple.twig" %}
+{% endblock %}
+
+{% block masthead %}
+  <section class="hero hero--large hero--has-gradient"{% if post.get_thumbnail %} style="background-image:url('{{ fn('bsd_getImage', post.get_field('masthead'), 'page-masthead', post.thumbnail) }}');"{% endif %}>
+    <div class="hero__inner">
+      <h1 class="hero__big-title">{{post.title}}</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+	<section class="page-section page-section--{{ post.post_name }} page-section--birthdays">
+
+		<div class="page-section__inner">
+
+			<div class="inner birthday-package-info">
+
+				<div class="page-section__content birthday-package-start-content">
+					{{ post.content }}
+				</div>
+
+				<div class="food-menu__dividing-title" id="section-packages">
+					{% include "partials/location-selector.twig" %}
+				</div>
+
+			</div> <!-- .inner -->
+
+			<div id="birthday-package-container-anchor"></div>
+
+			<div class="birthday-package-container">
+				<div class="inner grid">
+					{% for package in packages %}
+						{% if package.is_featured %}
+							{% include "partials/packages/featured.twig" %}
+						{% else %}
+							{% include "partials/packages/expandable.twig" %}
+						{% endif %}
+					{% else %}
+						<div class="inner grid">
+							<div class="grid__col-12" style="text-align:center; padding: 1em;">
+								<div class="card card--media">
+									<div class="card__inner" style="padding: 1em;">
+										<footer class="card__footer">
+											<h3 class="card__title mt-20">No Birthday Packages found for {{ currentLocation.name }}</h3>
+											<p>Please check back again soon!</p>
+										</footer>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div> <!-- .inner -->
+			</div> <!-- .birthday-package-container -->
+
+			<div class="page-section__content birthday-package-end-content">
+				<div class="inner">
+					{{ post.get_field('birthday_sub_section') }}
+				</div>
+			</div>
+
+		</div>
+	</section>
+{% endblock %}
+
+{% block footer %}
+	{% include "site-footer-simple.twig" %}
+{% endblock %}

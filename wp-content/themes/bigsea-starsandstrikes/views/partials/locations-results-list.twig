@@ -1,0 +1,13 @@
+{% if coralQuerySearch %}
+    {% for location in locationMatches %}
+        <div class="location-selector">
+            <h3 class="location-selector__title">{{location.title}}</h3>
+            {# <p class="location-selector__distance">{{ location.distance|number_format(2) }} miles away</p> #}
+            <a class="btn btn--small" href="{{ site.url }}?cl-location={{location.id}}&redirect={{redirect}}">Select this Location</a>
+        </div>
+    {% else %}
+        <div class="location-selector location-selector--no-results">
+            <h3>No Results Found (please search above)</h3>
+        </div>
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,40 @@
+//
+// Utilities
+//
+
+.scroll-to-top {
+	position: fixed;
+	z-index: 10;
+	bottom: 2em;
+	right: 2em;
+	display: inline-block;
+	padding: 1em;
+	text-decoration: none;
+	background: #eee;
+	transition: all 0.5s ease-in-out;
+	transform: translateY(0);
+}
+
+.scroll-to-top--hidden {
+	transform: translateY(200%);
+}
+
+.no-p {
+	padding: 0 !important;
+}
+
+.no-m {
+	margin: 0 !important;
+}
+
+.t-c {
+	text-align: center;
+}
+
+.t-l {
+	text-align: left;
+}
+
+.t-r {
+	text-align: right;
+}

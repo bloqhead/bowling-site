@@ -1,0 +1,80 @@
+//
+// Alerts
+//
+
+$alert-icon-dims: 54px !default;
+$alert-icon-spacing: 34px !default;
+
+.alert {
+  position: relative;
+  background-color: $gray;
+  border-radius: $base-radius;
+  padding: 20px;
+  margin: 0 0 20px 0;
+  border: 0;
+  color: $charcoal;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.alert--success {
+  background-color: $pale-mint;
+}
+
+.alert--info {
+  background-color: $slate-blue;
+  color: #fff;
+}
+
+.alert--warning {
+  background-color: $pale-yellow;
+}
+
+.alert--danger {
+  background-color: $red;
+  color: #fff;
+}
+
+// With icons
+
+.alert--has-icon {
+  display: flex;
+  flex-wrap: nowrap;
+  // justify-content: space-between;
+  padding: 28px 35px;
+  margin: 20px 0;
+  background-color: $yellow;
+  color: $charcoal;
+
+  a {
+
+    &:link, &:visited {
+      color: $slate-blue;
+    }
+
+    &:hover, &:focus, &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.alert__content {
+  width: calc( 100% - #{$alert-icon-dims + $alert-icon-spacing} );
+  font-size: 23px;
+}
+
+.alert__icon {
+  border-radius: 100%;
+  width: $alert-icon-dims;
+  height: $alert-icon-dims;
+  box-shadow: 0 1px 2px 0 rgba(#000, 0.2);
+  margin-right: $alert-icon-spacing;
+  background-color: #fff;
+  font-size: 28px;
+  color: $slate-blue;
+  line-height: $alert-icon-dims;
+  text-align: center;
+}

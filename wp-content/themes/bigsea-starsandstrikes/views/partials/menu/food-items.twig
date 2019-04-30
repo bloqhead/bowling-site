@@ -1,0 +1,27 @@
+{% for item in menu_items %}
+<div class="food-menu__item">
+  <header class="food-menu__item-header">
+    <h4>
+      {{ item.title }} 
+      {% for note in item.get_field('notes') %}
+        <i class="ss-icon-{{ note }}"></i>
+      {% endfor %}
+      {% if item.price and item.price > 0 %}
+        <span class="food-menu__item-price">{{ item.price|number_format(2) }}</span>
+      {% endif %}
+    </h4>
+  </header>
+  
+  <div class="food-menu__item-content">
+    {{ item.content }}
+
+    {% if item.hasAddons %}
+      {% if item.hasAddonsPrices %}
+        {% include 'partials/menu/food-addons-prices.twig' with { 'addons' : item.addons } %}
+      {% else %}
+        {% include 'partials/menu/food-addons.twig' with { 'addons' : item.addons } %}
+      {% endif %}
+    {% endif %}
+  </div>
+</div> <!-- .food-menu__item -->
+{% endfor %}

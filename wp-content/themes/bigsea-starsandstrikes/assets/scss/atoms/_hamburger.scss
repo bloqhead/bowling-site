@@ -1,0 +1,24 @@
+//
+// Hamburger
+//
+
+.hamburger {
+  position: relative;
+  z-index: 9998; // has to be 1 below .affixed-location-selector
+  float: right;
+  padding: 0;
+}
+
+.hamburger-inner {
+
+  &, &:before, &:after {
+    background-color: #fff;
+  }
+}
+
+.hamburger.is-active .hamburger-inner {
+
+  &:before, &:after {
+    background-color: $yellow;
+  }
+}

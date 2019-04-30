@@ -1,0 +1,18 @@
+<article class="teaser teaser-{{post.post_type}}" id="teaser-{{post.ID}}">
+	{% block content %}
+		<header class="teaser__header">
+			<h2 class="teaser__title">
+				<a href="{{post.link}}">{{post.title}}</a>
+			</h2>
+			<p class="post-meta">
+				{{ fn('bsd_posted_on', post) }}
+			</p>
+		{% if post.get_thumbnail %}
+			<img class="teaser__thumbnail" src="{{post.thumbnail.src}}" />
+		{% endif %}
+		</header>
+		<div class="teaser__content">
+			<p>{{post.get_preview}}</p>
+		</div>
+	{% endblock %}
+</article>

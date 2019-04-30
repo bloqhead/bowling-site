@@ -1,0 +1,108 @@
+/*!
+Theme Name: Stars & Strikes
+Theme URI: http://bigsea.co
+Author: Big Sea
+Author URI: http://bigsea.co
+Description: Child Theme for Big Sea Timber Base Theme, built for Stars & Strikes
+Version: 1.0.0
+Template: big-sea
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: big-sea
+Tags:
+*/
+
+// Font Awesome 5 Pro
+$fa-font-path: "assets/fonts/font-awesome-5-pro" !default;
+@import "vendor/font-awesome-5-pro/fontawesome";
+@import "vendor/font-awesome-5-pro/fa-brands";
+@import "vendor/font-awesome-5-pro/fa-light";
+@import "vendor/font-awesome-5-pro/fa-regular";
+@import "vendor/font-awesome-5-pro/fa-solid";
+
+// Bourbon v5
+@import "vendor/bourbon/bourbon";
+
+// Base SCSS
+// https://github.com/bloqhead/Base-SCSS
+@import "vendor/base-scss/base-scss";
+
+// Flexbox grid mixins
+// https://thingsym.github.io/flexbox-grid-mixins/
+@import "flexbox-grid-mixins/sass/flexbox-grid-mixins";
+
+// Hamburgers
+// https://jonsuh.com/hamburgers/
+@import "hamburgers/_sass/hamburgers/hamburgers";
+
+// Manually import any other vendor items below
+@import "vendor/normalize";
+@import "vendor/lity";
+@import "vendor/bxslider";
+
+// Variables
+@import "variables";
+
+// Mixins
+@import "utilities/mixins";
+@import "utilities/scroll-to-top";
+@import "utilities/utility-classes";
+@import "utilities/wordpress";
+
+//
+// Patterns
+//
+// These do not use Sass globbing because
+// we want to be able to control how they
+// are imported.
+//
+
+// Atoms
+@import "atoms/base";
+@import "atoms/backgrounds";
+@import "atoms/links";
+@import "atoms/lists";
+@import "atoms/type";
+@import "atoms/buttons";
+@import "atoms/forms";
+@import "atoms/hamburger";
+@import "atoms/icons";
+
+// Molecules
+@import "molecules/alerts";
+@import "molecules/bucket";
+@import "molecules/cards";
+@import "molecules/hero";
+@import "molecules/hours";
+@import "molecules/info-bar";
+@import "molecules/media";
+@import "molecules/menus";
+@import "molecules/pagination";
+@import "molecules/searchform";
+@import "molecules/teaser";
+@import "molecules/coral-locations-modal";
+
+// Organisms
+@import "organisms/comments";
+@import "organisms/footer";
+@import "organisms/header";
+@import "organisms/sidebar";
+@import "organisms/food-menu";
+@import "organisms/locations";
+@import "organisms/related-posts";
+@import "organisms/location-selector-affixed";
+
+// Templates
+@import "templates/full-width";
+@import "templates/locations";
+
+// Pages
+@import "pages/adult-birthdays";
+@import "pages/birthdays";
+@import "pages/blog";
+@import "pages/eat";
+@import "pages/home";
+@import "pages/location-selector";
+@import "pages/specials";
+@import "pages/404";
+@import "pages/search";

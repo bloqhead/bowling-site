@@ -1,0 +1,55 @@
+<div class="hours hours--location-based">
+
+  <div class="hours__stack">
+    <div class="hours__icon">
+      <i class="fas fa-phone"></i>
+    </div>
+    <div class="hours__content hours__content--large">
+      <a href="tel:{{ post.get_field('phone_number')|apply_filters('phone_href') }}">{{ post.get_field('phone_number') }}</a>
+    </div>
+  </div>
+
+  <div class="hours__stack">
+    <div class="hours__icon">
+      <i class="fas fa-map-marker"></i>
+    </div>
+    <div class="hours__content">
+      <p class="no-p no-m">
+        {% for address in post.get_field('address') %}
+          {{ address.street }}<br>
+          {% if address.suite %}
+            {{ address.suite }}<br>
+          {% endif %}
+          {{ address.city }}, {{ address.state }} {{ address.zip_code }}
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+
+  <div class="hours__stack">
+    <div class="hours__icon">
+      <i class="far fa-clock"></i>
+    </div>
+    <div class="hours__content">
+      <table class="hours__table">
+        {% for hours in post.get_field('hours') %}
+          <tr>
+            <td><strong>{{ hours.day }}</strong></td>
+            <td>{{ hours.time_open }} - {{ hours.time_close }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  {% if post.get_field('external_link_virtual') %}
+    <footer class="hours__footer">
+      <p class="no-p no-m">
+        <a href="{{ post.get_field('external_link_virtual') }}" class="btn btn--secondary hours__virtual-tour-cta" target="_blank">
+          <i class="far fa-eye no-transform"></i> Take a Virtual Tour <i class="fas fa-arrow-right"></i>
+        </a>
+      </p>
+    </footer>
+  {% endif %}
+
+</div> <!-- .hours -->

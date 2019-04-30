@@ -1,0 +1,61 @@
+//
+// Global Footer
+//
+
+.site-footer {
+  color: #fff;
+  text-align: center;
+}
+
+.pre-footer {
+  background-color: $light-navy;
+  padding: 52px;
+}
+
+.site-footer__actions {
+  margin: 35px 0;
+
+  .btn {
+    font-size: 14px;
+
+    + .btn {
+      margin-top: 0;
+    }
+  }
+}
+
+.copyright {
+  font-size: 12px;
+  margin: 15px 0;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .site-footer__actions {
+
+    .btn {
+      display: block;
+      clear: both;
+      margin: 10px 0 !important;
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  .site-footer__actions {
+
+    .btn {
+      margin: 0 3px;
+      letter-spacing: 0;
+    }
+  }
+}
+
+@media ($bp-medium) {
+  .site-footer__actions {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+}

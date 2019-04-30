@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--large hero--has-gradient" style="background-image:url('{{ fn('bsd_getImage', post.get_field('masthead'), 'page-masthead', post.thumbnail) }}');">
+    <div class="hero__inner">
+      <h1 class="hero__big-title">{{post.title}}</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+	<article class="post post-{{post.post_type}}" id="post-{{post.ID}}">
+		<div class="post__content">
+			<p>{{post.content}}</p>
+		</div>
+		{% if hasLocations %}
+			<div class="available-at">
+				<h3>Available at:</h3>
+					<p>{{ availableAtLocations }}</p>
+			</div>
+		{% endif %}
+		<footer class="post__footer">
+			{{ fn('bsd_entry_footer') }}
+		</footer>
+	</article>
+
+	{# include  "partials/comments.twig" #}
+
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

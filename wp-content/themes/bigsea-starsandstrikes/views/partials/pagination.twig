@@ -1,0 +1,30 @@
+{% set pageLimit = 4 %}
+<div class="pagination">
+    <ul class="pagination__pages">
+    {% if pagination.prev %}
+        <li>
+            <a href="{{pagination.prev.link}}" class="pagination-item pagination-item--prev {{pagination.prev.link|length ? '' : 'pagination-item pagination-item--invisible'}}">
+                <i class="fa fa-angle-left"></i> <span class="sr-only">Previous</span>
+            </a>
+        </li>
+    {% endif %}
+    {% for page in pagination.pages %}
+        <li>
+        {% if page.link %}
+            <a href="{{page.link}}" class="pagination-item {{page.class}}">{{page.title}}</a>
+        {% elseif page.current %}
+            <span class="pagination-item pagination-item--current {{page.class}}">{{page.title}}</span>
+        {% else %}
+            <span class="pagination-item {{page.class}}">{{page.title}}</span>
+        {% endif %}
+        </li>
+    {% endfor %}
+    {% if pagination.next %}
+        <li>
+            <a href="{{pagination.next.link}}" class="pagination-item pagination-item--next {{pagination.next.link|length ? '' : 'pagination-item pagination-item--invisible'}}">
+                <span class="sr-only">Next</span> <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+    {% endif %}
+    </ul>
+</div> <!-- .pagination -->

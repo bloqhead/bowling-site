@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--large hero--has-gradient" style="background-image: url({{ defaultMasthead.src('page-masthead') }})">
+    <div class="hero__inner">
+      {% if 'Press Releases' != title %}
+        <h3 class="hero__sub-title">Press Releases</h3>
+      {% endif %}
+      <h1 class="hero__big-title">{{ title }}</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+  <div class="grid">
+    {% for post in posts %}
+      {% include ["partials/teaser-"~post.post_type~".twig", "partials/teaser.twig"] %}
+    {% endfor %}
+  </div>
+
+  {% include "partials/pagination.twig" %}
+{% endblock %}

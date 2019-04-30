@@ -1,0 +1,21 @@
+{% set title = null %}
+
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--reduced hero--has-gradient" style="background-image: url({{ defaultMasthead.src('page-masthead') }})">
+    <div class="hero__inner">
+      <h1 class="hero__big-title">Locations</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+  <div class="grid">
+    {% for post in posts %}
+      {% include ["partials/teaser-"~post.post_type~".twig", "partials/teaser.twig"] %}
+    {% endfor %}
+  </div>
+
+  {% include "partials/pagination.twig" %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section class="page-section page-section--{{ post.post_name }}">
+		<div class="page-section__inner">
+			<header class="page-section__header">
+				<h1>{{post.title}}</h1>
+			</header>
+			<div class="page-section__content">
+				{{ post.content }}
+			</div>
+		</div>
+	</section>
+
+	{#
+	Add new sections like this:
+	<section class="page-section page-section--[class name here]">
+		<div class="page-section__inner">
+			<header class="page-section__header">
+				<h1></h1>
+			</header>
+			<div class="page-section__content">
+				[Content goes here.]
+			</div>
+		</div>
+	</section>
+	#}
+{% endblock %}

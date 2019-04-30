@@ -1,0 +1,114 @@
+//
+// Grid
+//
+// Uses https://thingsym.github.io/flexbox-grid-mixins/
+//
+
+// override these in your own variables
+$grid-column-count: 12 !default;
+$grid-gutter: 2.5% !default;
+$grid-activation-breakpoint: "min-width: 960px" !default;
+
+@media ($grid-activation-breakpoint) {
+
+  // basic grid
+  .grid {
+    @include grid(
+      $flex-wrap: wrap,
+      $align-items: flex-start,
+      $gutter: $grid-gutter
+    );
+  }
+
+  .grid-ng {
+    @include grid(
+      $flex-wrap: wrap,
+      $align-items: flex-start,
+      $gutter: 0
+    );
+  }
+
+  // grid that centers things
+  .grid-center {
+    @include grid(
+      $align-items: center,
+      $justify-content: center,
+      $gutter: $grid-gutter
+    );
+  }
+
+  .grid-ng-center {
+    @include grid(
+      $align-items: center,
+      $justify-content: center,
+      $gutter: 0
+    );
+  }
+
+  // grid that stretches things
+  .grid-stretch {
+    @include grid(
+      $align-items: stretch,
+      $gutter: $grid-gutter
+    );
+  }
+
+  .grid-ng-stretch {
+    @include grid(
+      $align-items: stretch,
+      $gutter: 0
+    );
+  }
+
+  // align flex item right
+  .grid__col-right {
+    margin-left: auto;
+  }
+
+  // align flex item left
+  .grid__col-left {
+    margin-right: auto;
+  }
+
+  .grid__col-auto {
+    @include grid-col(
+      $col: equal,
+      $grid-columns: $grid-column-count,
+      $condensed: true,
+      $gutter: $grid-gutter
+    );
+  }
+
+  .grid__col-ng-auto {
+    @include grid-col(
+      $col: auto,
+      $grid-columns: $grid-column-count,
+      $flex-grow: 1,
+      $condensed: true,
+      $gutter: 0
+    );
+  }
+
+  // setup the grid namespacing and cols
+  @for $i from 1 through 12 {
+    .grid__col-#{$i} {
+      @include grid-col(
+        $col: $i,
+        $grid-columns: $grid-column-count,
+        $condensed: true,
+        $gutter: $grid-gutter
+      );
+    }
+
+    // no gutter
+    .grid__col-ng-#{$i} {
+      @include grid-col(
+        $col: $i,
+        $grid-columns: $grid-column-count,
+        $condensed: true,
+        $gutter: 0
+      );
+    }
+  }
+
+}

@@ -1,0 +1,14 @@
+// 
+// Backgrounds
+// 
+
+$background-fallback-color-1: $slate-blue !default;
+
+.burst {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $background-fallback-color-1;
+  background-image: url('assets/img/gradient_starburst.png');
+  padding: 70px 0;
+}

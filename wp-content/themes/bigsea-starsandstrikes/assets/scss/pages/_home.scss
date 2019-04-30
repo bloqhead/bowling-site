@@ -1,0 +1,139 @@
+//
+// Homepage
+//
+
+body.home {
+  @include full-width-content;
+
+  #page-wrapper {
+    padding: 0 !important;
+  }
+
+  // Heroes
+
+  .hero {
+
+    &.have-fun,
+    &.better-birthday {
+      display: none;
+    }
+
+    &.have-fun {
+      background-image: url('assets/img/reserve_lane_bg.png');
+
+      @include retina {
+        background-image: url('assets/img/reserve_lane_bg@2x.png');
+      }
+    }
+
+    &.better-birthday {
+      background-image: url('assets/img/birthday_panel_bg.png');
+
+      @include retina {
+        background-image: url('assets/img/birthday_panel_bg@2x.png');
+      }
+    }
+
+    &.new-years-package {
+      background-image: url('assets/img/new_years_package.jpg');
+
+      @include retina {
+        background-image: url('assets/img/new_years_package@2x.jpg');
+      }
+    }
+  }
+
+  // Daily specials
+
+  .daily-specials {
+
+  }
+
+  // Featured items
+
+  .featured-items {
+
+  }
+
+  // Mobile user action CTAs
+
+  .mobile-cta-buttons {
+
+    .btn {
+      font-size: 23px;
+
+      i {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  .daily-specials,
+  .featured-items {
+
+    .media__content {
+      padding: 20px;
+      // padding: 20px 0;
+
+      // .media__content {
+      //   padding: 0;
+      // }
+    }
+
+    .media__header {
+      background-color: $yellow;
+      padding: 13px 20px;
+      // margin: 0 -20px;
+    }
+
+    .media__inner {
+      margin: 0 auto;
+    }
+
+    .card__content {
+      margin: 0 0 20px 0;
+    }
+
+    .card__footer {
+      padding: 0 20px 20px 20px;
+    }
+
+    [class*="grid__col"]:not(:last-of-type) .card--media {
+      margin-bottom: 40px;
+    }
+
+    // forces this to be flexbox across every screen size
+    .grid-ng-center {
+      @include grid(
+        $align-items: center,
+        $justify-content: center,
+        $gutter: 0
+      );
+    }
+
+    [class*="grid__col"] {
+      flex: auto;
+    }
+  }
+}
+
+@media ($bp-medium) {
+  body.home {
+
+    .hero {
+
+      &.have-fun,
+      &.better-birthday {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 1295px) {
+  body.home {
+
+  }
+}

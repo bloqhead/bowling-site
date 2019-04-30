@@ -1,0 +1,28 @@
+{
+    "name": "big-sea/locations",
+    "description": "Locations handling for custom user viewing on the web, for Wordpress",
+    "type": "project",
+    "license": "UNLICENSED",
+    "authors": [
+        {
+            "name": "Chris Lagasse",
+            "email": "chris@bigsea.co"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Coral\\Locations\\": "src/"
+        }
+    },
+    "require": {
+        "willdurand/geocoder": "4.1",
+        "geocoder-php/common-http": "4.0",
+        "geocoder-php/plugin": "1.0",
+        "geocoder-php/yandex-provider": "4.0",
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/message": "1.6",
+        "geocoder-php/google-maps-provider": "4.1",
+        "geocoder-php/free-geoip-provider": "4.0"
+    }
+}

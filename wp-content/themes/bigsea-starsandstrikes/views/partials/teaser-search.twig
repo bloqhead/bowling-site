@@ -1,0 +1,12 @@
+<article class="teaser teaser-{{post.post_type}}" id="teaser-{{post.ID}}">
+  {% block content %}
+    <header class="teaser__header">
+      <h2 class="teaser__title">
+        <a href="{{post.link}}">{{post.title}}</a>
+      </h2>
+    </header>
+    <div class="teaser__content">
+      <p>{{post.get_preview}}</p>
+    </div>
+  {% endblock %}
+</article>

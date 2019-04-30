@@ -1,0 +1,82 @@
+//
+// Media
+//
+// This is taking a note out of Nicole Sullivan's playbook
+// http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+//
+
+$media-max-width: $max-width !default;
+$media-margin: 95px auto !default;
+$media-margin-small: 20px auto !default;
+$media-header-margin: 0 0 24px 0 !default;
+$media-header-padding: 0 0 8px 0 !default;
+$media-header-fancy-bottom-border: 3px solid $red !default;
+$media-desktop-bp: $bp-medium !default;
+$media-mobile-bp: "max-width: 959px" !default;
+
+.media__header {
+  margin: $media-header-margin;
+  padding: $media-header-padding;
+}
+
+.media__header--fancy {
+  border-bottom: $media-header-fancy-bottom-border;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+
+  [class*="grid__col"]:last-of-type {
+    text-align: right;
+    text-transform: uppercase;
+  }
+}
+
+.media__inner {
+  max-width: $media-max-width;
+  margin: $media-margin-small;
+}
+
+.media__fancy-header {
+  text-align: center;
+
+  h4 {
+    text-shadow: 0 1px 2px rgba(#000, 0.2);
+  }
+}
+
+.media__content {
+
+  .hero {
+    margin-bottom: 43px;
+    text-align: center;
+  }
+}
+
+@media (unquote($media-mobile-bp)) {
+  .media__fancy-header {
+
+    h4 {
+      font-size: 23px;
+      margin: 35px 0;
+    }
+  }
+}
+
+@media ($media-desktop-bp) {
+  .media__inner {
+    margin: $media-margin;
+  }
+
+  .media__fancy-header {
+
+    h4 {
+      @include fancy-title($opacity: 0.5);
+
+      br {
+        display: none;
+      }
+    }
+  }
+}

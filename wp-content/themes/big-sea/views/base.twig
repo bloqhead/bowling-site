@@ -1,0 +1,59 @@
+{% block html_head_container %}
+	{% include 'views/header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+
+	<body class="{{body_class}}">
+
+		<div id="primary" class="content-area">
+
+			<main id="page" class="site" role="main">
+				<a class="skip-link screen-reader-text" href="#content">
+					{{ __( 'Skip to content', 'big-sea' ) }}
+				</a>
+
+				<header id="masthead" class="site-header" role="banner">
+					<div class="inner-wrapper">
+					{% block header %}
+						<div class="brand">
+							<h1 class="brand__title">
+								<a class="brand__logo" href="{{site.url}}" rel="home">{{site.name}}</a>
+							</h1>
+						</div>
+						<nav id="site-navigation" class="main-navigation" role="navigation">
+							{% include "menu.twig" %}
+						</nav><!-- #site-navigation -->
+					{% endblock %}
+					</div><!-- .inner-wrapper -->
+				</header><!-- #masthead -->
+
+				<div id="page-wrapper" class="inner-wrapper">
+
+					<div id="content" class="site-content">
+						{% if title %}<h1 class="page-title">{{title}}</h1>{% endif %}
+						{% block content %}
+							<p>Sorry, no content.</p>
+						{% endblock %}
+					</div><!-- #content -->
+
+				{% block sidebar %}{% endblock %}
+
+				</div><!-- #page-wrapper -->
+
+			{% block footer %}
+				<footer id="colophon" class="site-footer" role="contentinfo">
+					{% include 'footer.twig' %}
+				</footer><!-- #colophon -->
+			{% endblock %}
+
+			</main><!-- #page -->
+
+			<a href="#" class="scroll-to-top scroll-to-top--hidden">Top</a>
+
+		</div><!-- #primary -->
+
+		{{function('wp_footer')}}
+	</body>
+</html>

@@ -1,0 +1,17 @@
+{% set unique_id = random() %}
+{% set home_url = '/' %}
+
+<form role="search" method="get" class="search-form" action="{{ home_url|e }}">
+	<label for="search-form-{{ unique_id|e }}">
+		<span class="screen-reader-text">
+      {{ _x( 'Search for:', 'label', 'twentyseventeen' ) }}
+    </span>
+	</label>
+	<input type="search" id="search-form-{{ unique_id|e }}" class="search-field" placeholder="{{ fn( 'esc_attr_x', 'Search &hellip;', 'placeholder', 'twentyseventeen' ) }}" value="{{ fn( 'get_search_query' ) }}" name="s" />
+	<button type="submit" class="search-submit">
+    <i class="far fa-search"></i>
+    <span class="sr-only">
+      {{ fn( '_x', 'Search', 'submit button', 'twentyseventeen' ) }}
+    </span>
+  </button>
+</form>

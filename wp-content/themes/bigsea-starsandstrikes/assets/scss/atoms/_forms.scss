@@ -1,0 +1,118 @@
+//
+// Forms
+//
+
+$form-input-dimensions: 36px !default;
+
+@mixin formbase {
+  display: block;
+  background-color: $gray;
+  border-radius: $base-radius;
+  border: 0;
+  padding: 12px;
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  color: $charcoal;
+  transition: background-color 600ms ease-in-out;
+
+  &:focus {
+    background-color: lighten($pale-yellow, 20%);
+  }
+}
+
+form {
+
+}
+
+label, .gform_wrapper .gfield_label,
+.gform_wrapper .top_label .gfield_label {
+  display: block;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.field_sublabel_below {
+
+  input + label {
+
+  }
+}
+
+// stupid ass gravityforms selector hell
+input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+#{$all-text-inputs} {
+  height: $form-input-dimensions;
+  width: 100%;
+  @include formbase;
+
+  @include placeholder {
+    color: inherit;
+  }
+}
+
+textarea {
+  min-height: 200px;
+  overflow: auto;
+}
+
+select:not(.ui-datepicker-month):not(.ui-datepicker-year), .gfield_select {
+  @include formbase;
+  padding: 0 46px 0 12px !important;
+  height: $form-input-dimensions;
+  line-height: $form-input-dimensions;
+  appearance: none;
+
+  // background-color: #fff;
+  background-image: url('assets/img/select-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: $form-input-dimensions;
+
+  &:focus, &:active {
+    background-position: bottom right;
+  }
+}
+
+// height fix for select fields that allow multiple choices
+select[multiple="multiple"] {
+  height: auto !important;
+}
+
+// Gravityforms overrides
+
+.gform_wrapper {
+
+  .gfield_required {
+    color: $slate-blue;
+  }
+
+  .gform_fields {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+// Sidebar forms
+
+#secondary {
+
+  .gform_wrapper {
+
+    input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+    #{$all-text-inputs} {
+      background-color: #fff;
+      margin-bottom: 0;
+    }
+
+    .gfield_select {
+      background-color: #fff;
+      width: 100% !important;
+    }
+
+    .field_sublabel_below .ginput_complex.ginput_container label {
+      margin: 0;
+    }
+  }
+}

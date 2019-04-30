@@ -1,0 +1,77 @@
+//
+// Project variables
+//
+
+// dimensions
+$max-width: 1100px !default;
+$pulldown-menu-width: 250px !default;
+
+// colors
+$charcoal: #231F20;
+$yellow: #F7D54D;
+$pale-yellow: #F7EF50;
+$gold: #F5B400;
+$slate-blue: #2692C9;
+$light-navy: #1C457A;
+$red: #F04C36;
+$apple: #FF2E06;
+$crimson: #CA0000;
+$gray: #EBEBEB;
+$pale-mint: #d4edda;
+$gray-medium: #BFBFBF;
+$gray-dark: #9B9B9B;
+
+// fonts
+$base-font-weight: normal !default;
+$base-font-size-small: 14px !default;
+$base-font-size: 16px !default;
+$base-font-color: $charcoal !default;
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$base-line-height: 24px !default;
+$base-line-height-mobile: 22px !default;
+$base-letter-spacing: 1px !default;
+$open-sans: "Open Sans", $base-font-family !default;
+$zilla-slab: "Zilla Slab", $base-font-family !default;
+
+// custom S&S icon font
+@font-face {
+  font-family: "stars-strikes";
+  src:url("assets/fonts/stars-strikes/stars-strikes.eot");
+  src:url("assets/fonts/stars-strikes/stars-strikes.eot?#iefix") format("embedded-opentype"),
+    url("assets/fonts/stars-strikes/stars-strikes.woff") format("woff"),
+    url("assets/fonts/stars-strikes/stars-strikes.ttf") format("truetype"),
+    url("assets/fonts/stars-strikes/stars-strikes.svg#stars-strikes") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// breakpoints
+$bp-small: "min-width: 768px" !default;
+$bp-medium: "min-width: 960px" !default;
+$bp-medium-large: "min-width: 1140px" !default;
+$bp-large: "min-width: 1200px" !default;
+$desktop-only-breakpoint: "min-width: 960px" !default;
+$mobile-only-breakpoint: "max-width: 959px" !default;
+
+// grid, content areas
+$default-grid-gutter: 60px !default;
+$masthead-brand-flex-col-width: 3 !default;
+$masthead-navigation-flex-col-width: 9 !default;
+$content-flex-col-width: 7.5 !default;
+$sidebar-flex-col-width: 4.5 !default;
+$page-wrapper-margin: 2em auto 0 auto !default;
+$container-edge-spacing: 0 20px !default;
+
+// misc
+$inner-wrapper-padding: 0 1.5em !default;
+$masthead-background: #eee !default;
+$base-radius: 10px !default;
+$base-transition: all 300ms cubic-bezier(.45,.19,.35,.74) !default;
+$sidebar-vertical-shift: -94px !default;
+$starburst-background: $slate-blue url('assets/img/gradient_starburst.png') no-repeat center !default;
+$bokeh-background: $slate-blue url('assets/img/birthday_panel_bg_bokeh.png') no-repeat center !default;
+
+// gradients
+$gradient-yellow: linear-gradient(180deg, $yellow 0%, $gold 100%) !default;
+$gradient-blue: linear-gradient(180deg, $slate-blue 0%, $light-navy 100%) !default;
+$gradient-red: linear-gradient(180deg, $apple 0%, $crimson 100%);

@@ -1,0 +1,50 @@
+<div class="featured-birthday-package package-details package-details--featured">
+
+    <div class="card card--media">
+        <div class="card__inner">
+            <header class="card__header">
+                <h4 class="card__utility-title">
+                    {{ package.public_title }}
+                    <span class="bubble">{{ package.featured_cause }}</span>
+                </h4>
+            </header>
+            <div class="card__content">
+
+                <div class="grid-ng-stretch flexit--mobile flexit--col-reverse">
+
+                    {% include 'partials/packages/list-features-primary.twig' with {'class' : 'grid__col-ng-4'} %}
+
+                    {% include 'partials/packages/list-features-other.twig' with {'class' : 'grid__col-ng-4'} %}
+
+                    <div class="grid__col-4 birthday-package-price">
+                        <div class="birthday-package-price__inner">
+                            {% for cost_item in package.get_field('price') %}
+                                {% set cost_split = cost_item.cost|split('.') %}
+                                {% set dollars = cost_split[0] %}
+                                {% set cents = cost_split[1] %}
+                                <div class="price-burst">
+                                    <div class="price-burst__inner">
+                                        <p class="price-burst__cost">
+                                            {{dollars}}<sup>{{cents}}</sup>
+                                        </p>
+                                        <p class="price-burst__breakdown">{{ cost_item.per }}</p>
+                                    </div>
+                                </div>
+                                <p class="price-minimum">{{ cost_item.note }}</p>
+                            {% endfor %}
+                            {% if package.link_booking %}
+                                <a class="btn btn--alt btn--large btn--block" href="{{ package.link_booking }}">Book Now!</a>
+                                <p class="package-availability">{{ currentLocation.title }}</p>
+                            {% else %}
+                                <a class="btn btn--alt btn--block" href="tel:{{ defaultPhone|apply_filters('phone_href') }}">Call Now to Book!</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div> <!-- .card__content -->
+
+        </div>
+    </div> <!-- .card -->
+</div>

@@ -1,0 +1,12 @@
+<table class="food-menu__item-additions">
+  {% for addon in addons %}
+    <tr>
+      <td><em>{{ addon.name|apply_filters('render_icons') }}</em></td>
+      {% if addon.price %}
+        <td>
+          <strong>{{ addon.price|number_format(2) }}</strong>
+        </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>

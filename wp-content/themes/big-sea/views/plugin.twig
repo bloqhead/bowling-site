@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section class="page-section">
+		<div class="page-section__inner">
+			<header class="page-section__header">
+				<h1>{{ title }}</h1>
+			</header>
+			<div class="page-section__content">
+				{{ content }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

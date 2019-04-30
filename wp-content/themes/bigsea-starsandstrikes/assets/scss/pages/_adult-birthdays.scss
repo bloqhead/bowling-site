@@ -1,0 +1,74 @@
+//
+// Adult Birthdays
+//
+
+body.page-id-131 {
+
+  #secondary {
+
+    .widget {
+      padding: 0;
+    }
+
+    .package-details {
+
+      .card {
+        margin-bottom: 0;
+      }
+
+      .card__content {
+        padding: 25px;
+      }
+
+      .grid-ng-stretch {
+        display: block !important;
+      }
+
+      .birthday__feature-group {
+        display: flex;
+        margin-bottom: 35px;
+        border-bottom: 1px solid $gray-medium;
+
+        h3 {
+          $i: 35px;
+          margin-right: $i;
+          width: calc(33.33% - #{$i});
+        }
+      }
+
+      .birthday-package-price {
+        margin-top: 35px;
+      }
+
+      .icon-list,
+      .basic-list {
+
+        li {
+          margin: 0 0 35px 0;
+        }
+      }
+
+      .icon-list {
+        border-bottom: 1px solid $gray-medium;
+        margin-bottom: 35px;
+
+        i {
+          margin-right: 14px;
+        }
+      }
+
+      .basic-list {
+
+        li {
+          margin: 0 0 35px 0;
+
+          &:before {
+            display: block;
+            font-size: 20px;
+            left: -27px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--has-gradient"{% if post.get_thumbnail %} style="background-image:url('{{ fn('bsd_getImage', post.get_field('masthead'), 'page-masthead-2x', post.thumbnail) }}');"{% endif %}>
+    <div class="hero__inner">
+
+      <div class="grid-ng-center">
+        <div class="grid__col-ng-8">
+          <h1 class="hero__big-title">{{post.title}}</h1>
+        {% if selectedLocation.ID == post.ID %}
+          <p class="hero__location-notice">
+            <i class="far fa-check"></i> <strong>{{post.title}}</strong> is set as your location &mdash; <a href="/location-selector/">Change</a>
+          </p>
+        {% else %}
+          <p class="hero__location-notice hero__location-notice--no-bg">
+            <a class="btn btn--small" href="{{post.link}}?cl-location={{post.id}}">Set as your location?</a>
+          </p>
+        {% endif %}
+        </div>
+        <div class="grid__col-ng-4">
+          <div class="desktop-only">
+            {% include "partials/hours-location-based.twig" %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block beforecontent %}
+  {% if cta_top %}
+  <div class="bucket location__cta-group location__cta-group--top">
+    <div class="bucket__inner">
+
+      <div class="grid">
+        {% for cta in cta_top %}
+          <div class="grid__col-6">
+
+            <div class="card card--overlay" style="background-image: url('{{ fn('bsd_getImage', cta.image, 'card-cta-image-2x') }}')">
+              <a href="{{ cta.button_link }}" class="card__wrapper-link">
+                <div class="card__inner">
+                  <header class="card__header">
+                    <h4 class="card__utility-title">{{ cta.title }}</h4>
+                  </header>
+                  <div class="card__content">
+                    <h3 class="card__title">{{ cta.description }}</h3>
+                  </div>
+                  <footer class="card__footer">
+                    <p class="card__faux-link">{{ cta.button_text }} <i class="fas fa-arrow-right"></i></p>
+                  </footer>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>  <!-- .location__cta-group -->
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+	<article class="post post-{{post.post_type}}" id="post-{{post.ID}}">
+		<div class="post__content">
+
+      <h2>{{ headline_specials }}</h2>
+
+      <div class="location__daily-specials">
+
+        {% for current in dailySpecials %}
+
+          <div class="location__daily-special">
+            <header class="info-bar">
+              <h3 class="info-bar__title">{{ fn('getDayFromInt', current.day) }}</h3>
+            </header>
+            {% for special in current.special %}
+              <div class="grid location__event-group">
+                <div class="grid__col-4">
+                  <img src="{{ fn('bsd_getImage', special.thumbnail, 'basic-post-image-2x') }}" alt="{{ special.thumbnail.alt }}">
+                </div>
+                <div class="grid__col-8">
+                  <div class="info-bar__sub-title">
+                    <h3>{{ special.title }}</h3>
+                  {% for hours in special.get_field('hours') %}
+                    <h4 class="info-bar__extra">{{ hours.time_open }} - {{ hours.time_close }}</h4>
+                  {% endfor %}
+                  </div>
+                  <p>{{ special.content }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div> <!-- .location__daily-special -->
+
+        {% else %}
+          <div class="location__daily-special">
+            <div class="grid">
+              <div class="grid__col-12">
+                <p>No Daily Specials found for {{ post.name }}</p>
+              </div>
+            </div>
+          </div> <!-- .location__daily-special -->
+        {% endfor %}
+
+      </div>
+
+		</div>
+		<footer class="post__footer">
+			{{ fn('bsd_entry_footer') }}
+		</footer>
+	</article>
+{% endblock %}
+
+{% block aftercontent %}
+  {% if cta_bottom %}
+  <div class="bucket location__cta-group location__cta-group--bottom">
+    <div class="bucket__inner">
+
+      <div class="grid">
+        {% for cta in cta_bottom %}
+          <div class="grid__col-6">
+
+            <div class="card card--overlay alt-overlay" style="background-image: url('{{ fn('bsd_getImage', cta.image, 'card-cta-image-2x') }}')">
+              <a href="{{ cta.button_link }}" class="card__wrapper-link">
+                <div class="card__inner">
+                  <div class="card__content">
+                    <h3 class="card__title">{{ cta.title }}</h3>
+                    <p>{{ cta.description }}</p>
+                  </div>
+                  <footer class="card__footer">
+                    <p class="card__faux-link">{{ cta.button_text }}<i class="fas fa-arrow-right"></i></p>
+                  </footer>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div> <!-- .location__cta-group -->
+  {% endif %}
+
+  <div class="burst location__attractions-group">
+    <div class="inner">
+
+      <header class="no-p no-m t-c">
+        <h2 class="h1 shadow-title">{{ headline_attractions }}</h2>
+      </header>
+
+      {% for current in attractions %}
+        <div class="card card--icon-bar card--{{ current.get_field('icon') }}">
+          <div class="card__inner">
+            <div class="grid-ng-stretch">
+              <div class="grid__col-ng-4 card__side-image" style="background-image: url({{ fn('bsd_getImage', current.thumbnail, 'card-cta-image-2x') }})">
+                <i class="ss-icon-{{ current.get_field('icon') }} card__floating-icon"></i>
+              </div>
+              <div class="grid__col-ng-8 card__side-content">
+                <header class="card__header">
+                  <h2 class="card__title">{{ current.name }}</h2>
+                </header>
+                <div class="card__content">
+                  {% if current.summary %}
+                    <p>{{ current.summary }}</p>
+                  {% else %}
+                    <p>{{ current.preview }}</p>
+                  {% endif %}
+                </div>
+                <footer class="card__footer">
+                  <a href="{{ current.link }}">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                  </a>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div> <!-- .card -->
+      {% endfor %}
+
+      {# Only show Food if the location has a restaurant menu #}
+      {% if post.get_field('restaurant_menu') %}
+        {% for attraction in attraction_food %}
+          <div class="card card--icon-bar card--food">
+            <div class="card__inner">
+              <div class="grid-ng-stretch">
+                <div class="grid__col-ng-4 card__side-image" {% if attraction.image %}style="background-image: url({{ fn('bsd_getImage', TimberImage(attraction.image), 'card-cta-image-2x') }})"{% endif %}>
+                  <i class="ss-icon-food card__floating-icon"></i>
+                </div>
+                <div class="grid__col-ng-8 card__side-content">
+                  <header class="card__header">
+                    <h2 class="card__title">{{ attraction.title }}</h2>
+                  </header>
+                  <div class="card__content">
+                    <p>{{ attraction.description }}</p>
+                  </div>
+                  <footer class="card__footer">
+                    <a href="/eat/?switch={{ post.slug }}">
+                      Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .card -->
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div> <!-- .location__attractions-group -->
+
+  {% for cta in party_cta %}
+  <section class="hero hero--reduced have-fun hero__floater-container">
+    <div class="hero__inner">
+      <div class="grid-ng-center">
+        <div class="grid__col-ng-6 grid__col-left">
+          <h2 class="hero__title hero__title--dark">{{ cta.title }}</h2>
+          <p>{{ cta.description }}</p>
+          <p>
+            <a href="{{ cta.button_link }}" class="btn btn--has-icon">
+              {{ cta.button_text }} <i class="fas fa-arrow-right"></i>
+            </a>
+          </p>
+        </div>
+        <div class="grid__col-ng-6">
+          <img src="{{theme.link}}/assets/img/bday_cutout_location-page@2x.png" alt="kids enjoying birthday party" class="hero__floater">
+        </div>
+      </div>
+    </div>
+  </section> <!-- .hero -->
+  {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

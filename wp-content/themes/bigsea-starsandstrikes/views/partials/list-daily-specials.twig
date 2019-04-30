@@ -1,0 +1,46 @@
+<div class="media__content">
+  <div class="grid">
+    {% for current in dailySpecials %}
+      <div class="grid__col-4">
+
+        <div class="card card--media">
+          <div class="card__inner">
+            <header class="card__header">
+              <h4 class="card__utility-title">{{ fn('getDayFromInt', current.day) }}</h4>
+            </header>
+            {% for special in current.special %}
+              {% if loop.first %}
+                <div class="card__content">
+                  <div class="card__faux-image" style="background-image:url('{{ fn('bsd_getImage', special.thumbnail, 'basic-square-2x') }}');">
+                    <img src="{{ fn('bsd_getImage', special.thumbnail, 'basic-square-2x') }}" alt="{{ special.thumbnail.alt }}">
+                  </div>
+                </div>
+              {% endif %}
+              <footer class="card__footer">
+                <h3 class="card__title">{{ special.name }}</h3>
+                {% for hours in special.get_field('hours') %}
+                  <p class="card__date">{{ hours.time_open }} - {{ hours.time_close }}</p>
+                {% endfor %}
+                <a href="{{ special.link }}">
+                  Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+              </footer>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    {% else %}
+      <div class="grid__col-12">
+        <div class="card card--media">
+          <div class="card__inner">
+            <footer class="card__footer">
+              <h3 class="card__title">No Daily Specials found for {{ locationName }}</h3>
+              <p>Please check back again soon!</p>
+            </footer>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div><!-- media__content -->

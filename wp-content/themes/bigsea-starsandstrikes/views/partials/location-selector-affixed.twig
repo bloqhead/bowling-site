@@ -1,0 +1,26 @@
+{# @TODO Tie this into a cookie so that we only show it when needed. #}
+<div class="affixed-location-selector">
+	<header class="affixed-location-selector__initial">
+		<div class="affixed-location-selector__col">
+			<p>Your location was automatically set to <strong>{{ selectedLocation.name }}</strong>.</p>
+		</div>
+		<div class="affixed-location-selector__col">
+			<p>
+				<a href="#" class="affixed-location-selector__changer">
+					<i class="fas fa-times no-transform"></i>
+					<span>Change</span>
+				</a>
+			</p>
+		</div>
+	</header>
+	<div class="affixed-location-selector__content">
+		<ul class="affixed-location-selector__locations-list">
+		{% for location in locations %}
+			<li>
+				{# @TODO This has to trigger the location switch, not link to the page. Change it. #}
+				<a href="{{ location.link }}">{{ location.title }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div> <!-- .affixed-location-selector -->

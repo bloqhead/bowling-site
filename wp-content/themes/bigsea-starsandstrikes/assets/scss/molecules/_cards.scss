@@ -1,0 +1,560 @@
+//
+// Cards
+//
+
+// Base
+
+.card {
+  overflow: hidden;
+  // border-radius: $base-radius $base-radius 0 0;
+  @include cleartext;
+}
+
+.card--no-radius {
+  border-radius: 0;
+}
+
+.card__inner {
+
+}
+
+.card__link {
+  display: block;
+  text-decoration: none !important;
+}
+
+.card__date {
+  font-size: 16px;
+  font-weight: bold;
+  color: $gray-dark;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.card__faux-link {
+
+  i {
+    margin-left: 10px;
+    transition-delay: 0 !important;
+  }
+}
+
+// replacement for the inline image
+.card__faux-image {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-color: transparent;
+  background-size: cover;
+  height: 245px;
+
+  img {
+    display: none !important;
+  }
+}
+
+.card__wrapper-link {
+  display: block;
+
+  &:link, &:hover, &:active, &:focus, &:visited {
+
+    &, * {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+.card__header {
+  border-radius: 10px 10px 0 0;
+}
+
+.card__utility-title {
+
+}
+
+.card__title {
+
+}
+
+.card__content {
+
+}
+
+.card__icon {
+  font-size: 26px;
+}
+
+.card__footer {
+
+  a {
+    text-decoration: none;
+  }
+}
+
+// Feature
+
+.card--feature {
+  height: 100px;
+  border-radius: $base-radius;
+  text-align: center;
+
+  @include animated-gradient(
+    $transition: $base-transition,
+    $assembledStaticGradient: linear-gradient(180deg, rgba(black, 0.95) 0%, black 100%),
+    $assembledHoverGradient: linear-gradient(180deg, transparent 0%, $light-navy 100%)
+  );
+
+  // this stuff has to come after the 'animated-gradient' mixin above
+  background-color: $charcoal;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  // this is a bug fix for the border-radius + pseudo element bug
+  transform: scale(1.0001);
+
+  &:after {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: -100;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(black, 0.4);
+  }
+
+  .card__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+  }
+
+  .card__icon {
+    line-height: 0;
+    margin-bottom: 10px;
+    will-change: transform;
+    transition: $base-transition;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  .card__title {
+    color: white;
+    font-size: 23px;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  &:hover {
+
+    .card__icon {
+      transform: scale(1.15) translateY(-3px);
+    }
+  }
+
+  // when present in a sidebar
+  .widget-area & {
+
+    &:not(:last-of-type) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// Media cards
+
+.card--media {
+  margin-bottom: 45px;
+
+  .card__utility-title {
+    background: $slate-blue;
+    // background: $gradient-blue;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 7px;
+    text-shadow: 0 1px 2px rgba(#000, 0.3);
+  }
+
+  .card__header {
+    // border-radius: $base-radius $base-radius 0 0;
+    overflow: hidden;
+  }
+
+  .card__title {
+    margin: 0 0 15px 0;
+  }
+
+  .card__footer + .card__footer {
+    margin-top: 30px;
+  }
+
+  .card__content {
+    margin: 0 0 24px 0;
+    // margin: 0 0 35px 0;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .card__footer {
+
+    a {
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Location feature cards
+
+.card {
+
+  $backgrounds: (
+    'bowling'      : 'assets/img/img_button_vip_bowling.jpg',
+    'bumper-cars'  : 'assets/img/img_button_bumper_cars.jpg',
+    'laser-tag'    : 'assets/img/img_button_laser_tag.jpg',
+    'escape'       : 'assets/img/img_button_escapology.jpg',
+    'arcade'       : 'assets/img/img_button_arcade.jpg'
+  );
+
+  @each $class, $image in $backgrounds {
+    &--#{$class} {
+      background-image: url(#{$image});
+    }
+  }
+}
+
+// Modal cards
+
+$card-modal-padding: 15px;
+$card-modal-max-width: 50%;
+$card-modal-min-width: 300px;
+
+@mixin card-modal-base {
+  border-radius: $base-radius;
+  box-shadow: 0 2px 20px 0 rgba(#000, 0.5);
+  text-align: left;
+  background-color: #fff;
+}
+
+@mixin card-modal-shared {
+  margin: 0 auto;
+  max-width: $card-modal-max-width;
+  min-width: $card-modal-min-width;
+}
+
+@mixin card-modal-header {
+  display: flex;
+  align-items: center;
+  background-color: $slate-blue;
+  padding: ( $card-modal-padding / 2 ) $card-modal-padding ( $card-modal-padding / 2 ) $card-modal-padding;
+
+  button {
+    margin-left: auto;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 0;
+    padding: 0;
+
+    &, &:hover, &:focus, &:active, &:visited {
+      background-color: transparent;
+      background: none;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    i {
+      transform: none !important;
+    }
+
+    &:hover, &:focus {
+      color: $yellow;
+    }
+  }
+}
+
+.card--modal,
+.card--modal-simple {
+  @include card-modal-shared;
+
+  .card__header {
+    color: #fff;
+  }
+
+  .card__title {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .card__content {
+    padding: $card-modal-padding;
+
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+.card--modal {
+  @include card-modal-base;
+
+  .card__header {
+    @include card-modal-header;
+  }
+
+  .card__header--alt {
+    display: block;
+    background-color: $gold;
+    color: $light-navy;
+    text-align: center;
+  }
+}
+
+.card--modal-simple {
+
+  .card__header {
+    text-align: center;
+    margin-bottom: $card-modal-padding;
+
+    img {
+      display: block;
+      max-width: 247px;
+      margin: 0 auto;
+    }
+  }
+
+  select {
+    width: 100%;
+    background-image: url('assets/img/select-arrow-light.svg');
+  }
+}
+
+// Overlay cards
+
+.card--overlay {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 35px;
+  height: 279px;
+  border-radius: 0;
+
+  &:before {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    will-change: opacity;
+    opacity: 0.5;
+    background-color: #000;
+    transition: opacity 500ms ease-in-out;
+  }
+
+  &:hover {
+
+    &:before {
+      opacity: 0.25;
+    }
+  }
+
+  // for an alternate overlay, attach this class
+  &.alt-overlay {
+
+    &:before {
+      opacity: 0.75;
+      background-color: $light-navy;
+    }
+
+    &:hover {
+
+      &:before {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .card__wrapper-link {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card__utility-title {
+    font-size: 12px;
+    font-family: $open-sans;
+    color: $yellow;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .card__title {
+    color: #fff;
+    margin: 0;
+  }
+
+  .card__content {
+    color: #fff;
+    font-weight: normal;
+  }
+
+  .card__faux-link {
+    font-size: 16px;
+    font-family: $open-sans;
+    font-weight: bold;
+    color: $yellow;
+    text-transform: uppercase;
+    margin: 0;
+
+    i {
+      will-change: transform;
+      transition: transform 300ms ease-in-out;
+    }
+  }
+
+  .card__footer {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+// Icon bar cards
+
+.card--icon-bar {
+  background-image: none;
+  background-color: #fff;
+  border-radius: $base-radius;
+  box-shadow: 0 2px 4px 0 rgba(#000, 0.3);
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+
+  $backgrounds: (
+    '.card--bowling'      : 'assets/img/img_button_vip_bowling.jpg',
+    '.card--bumper-cars'  : 'assets/img/img_button_bumper_cars.jpg',
+    '.card--laser-tag'    : 'assets/img/img_button_laser_tag.jpg',
+    '.card--escape'       : 'assets/img/img_button_escapology.jpg',
+    '.card--arcade'       : 'assets/img/img_button_arcade.jpg'
+  );
+
+  @each $class, $image in $backgrounds {
+    &#{$class} .card__side-image {
+      background-image: url(#{$image});
+    }
+  }
+
+  .card__title {
+    color: $light-navy;
+    margin: 0 0 26px 0;
+  }
+
+  .card__side-image, .card__side-content {
+    min-height: 215px;
+  }
+
+  .card__footer {
+
+    a {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.card__side-image {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.card__side-content {
+  padding: 36px;
+}
+
+$card-floating-icon-dims: 84px;
+
+.card__floating-icon {
+  position: absolute;
+  bottom: -#{$card-floating-icon-dims / 2}; left: 50%;
+  display: block;
+  background-color: $red;
+  border-radius: 50%;
+  width: $card-floating-icon-dims;
+  height: $card-floating-icon-dims;
+  line-height: $card-floating-icon-dims;
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(#000, 0.5);
+  transform: translateX(-50%);
+}
+
+// Notice card
+
+.card--notice {
+
+  .card__header {
+    border-bottom: 4px solid $red;
+    padding: 18px;
+
+    i {
+      $i: 37px;
+      width: $i;
+      height: $i;
+      background-color: $red;
+      font-size: 18px;
+      color: #fff;
+      line-height: $i;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      border-radius: 100%;
+      margin-right: 14px;
+    }
+  }
+
+  .card__title {
+    margin: 0;
+  }
+
+  .card__content {
+    padding: 18px;
+
+    p {
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media ($bp-medium) {
+  .card__side-content {
+    padding: 36px 65px;
+  }
+
+  .card__floating-icon {
+    bottom: auto;
+    left: auto;
+    top: 50%;
+    right: -#{$card-floating-icon-dims / 2};
+    transform: translateY(-50%) translateX(0);
+  }
+}

@@ -1,0 +1,280 @@
+{
+    "project_logo": null,
+    "project_favicon": "favicon.png",
+    "project_name": "Stars and Strikes",
+    "project_url": null,
+    "copyright_start_year": 2018,
+    "client_name": null,
+    "client_url": null,
+    "creators": [
+        {
+            "name": "Big Sea",
+            "url": "https://bigsea.co/"
+        }
+    ],
+    "theme": {
+        "border_color": "#E0E6ED",
+        "highlight_color": "#F9FAFC",
+        "brand_color": "#2692C9",
+        "background_color": "#FFFFFF",
+        "code_highlight_theme": "github",
+        "override_code_highlight_bg": "#fff",
+        "sample_dark_background": "#333333",
+        "show_project_name": true,
+        "show_version": true,
+        "max_width": null,
+        "titles": {
+            "library_title": "Pattern Library",
+            "pages_title": "Overview",
+            "components_title": "Components"
+        }
+    },
+    "assets": {
+        "css": [
+            "/wp-content/themes/big-sea/style.css",
+            "/wp-content/themes/bigsea-starsandstrikes/style.css"
+        ],
+        "js": [
+            "/wp-content/themes/bigsea-starsandstrikes/assets/js/vendor/jquery.js",
+            "/wp-content/themes/bigsea-starsandstrikes/assets/js/build.js"
+        ]
+    },
+    "font_libraries": {
+        "typekit_code": null,
+        "typography_web_fonts": null,
+        "google_web_fonts": "https://fonts.googleapis.com/css?family=Open+Sans:400,700|Zilla+Slab:400,700"
+    },
+    "content": {
+        "show_first_page_on_load": false,
+        "title": "Overview",
+        "pages": [
+            {
+                "name": "introduction",
+                "title": "Introduction",
+                "file": "./pages/intro.md"
+            }
+        ]
+    },
+    "groups": [
+        {
+            "name": "branding",
+            "title": "Branding",
+            "components": [
+                {
+                    "group": "branding",
+                    "name": "color-palette",
+                    "title": "Colors",
+                    "type": "colors",
+                    "colors": [
+                        "#231F20",
+                        "#F7D54D",
+                        "#F7EF50",
+                        "#2692C9",
+                        "#1C457A",
+                        "#F04C36",
+                        "#EBEBEB",
+                        "#d4edda"
+                    ]
+                },
+                {
+                    "group": "branding",
+                    "name": "logo-full",
+                    "title": "Logo - Full",
+                    "width": "half"
+                },
+                {
+                    "group": "branding",
+                    "name": "logo-simple",
+                    "title": "Logo - Simple",
+                    "width": "half"
+                }
+            ]
+        },
+        {
+            "name": "atoms",
+            "title": "Atoms",
+            "components": [
+                {
+                    "group": "atoms",
+                    "name": "headings",
+                    "title": "Headings"
+                },
+                {
+                    "group": "atoms",
+                    "name": "paragraphs",
+                    "title": "Paragraphs"
+                },
+                {
+                    "group": "atoms",
+                    "name": "lists",
+                    "title": "Lists"
+                },
+                {
+                    "name": "custom-icons",
+                    "title": "Custom Icons",
+                    "width": "half",
+                    "group": "atoms"
+                },
+                {
+                    "group": "atoms",
+                    "name": "links",
+                    "title": "Links"
+                },
+                {
+                    "group": "atoms",
+                    "name": "buttons",
+                    "title": "Buttons"
+                },
+                {
+                    "name": "form-elements",
+                    "title": "Form Elements",
+                    "group": "atoms"
+                },
+                {
+                    "group": "atoms",
+                    "name": "grid",
+                    "title": "Grid"
+                }
+            ]
+        },
+        {
+            "name": "molecules",
+            "title": "Molecules",
+            "components": [
+                {
+                    "name": "social-icons",
+                    "title": "Social Icons",
+                    "group": "molecules"
+                },
+                {
+                    "name": "navigation",
+                    "title": "Navigation",
+                    "group": "molecules"
+                },
+                {
+                    "group": "molecules",
+                    "name": "card",
+                    "title": "Card"
+                },
+                {
+                    "name": "card-feature-button",
+                    "title": "Card - Feature Button",
+                    "group": "molecules"
+                },
+                {
+                    "group": "molecules",
+                    "name": "card-media",
+                    "title": "Card - Media",
+                    "width": "half"
+                },
+                {
+                    "group": "molecules",
+                    "name": "card-overlay",
+                    "title": "Card - Overlay",
+                    "width": "half"
+                },
+                {
+                    "group": "molecules",
+                    "name": "card-notice",
+                    "title": "Card - Notice",
+                    "width": "half"
+                },
+                {
+                    "group": "molecules",
+                    "name": "card-icon-bar",
+                    "title": "Card - Icon Bar"
+                },
+                {
+                    "group": "molecules",
+                    "name": "alerts",
+                    "title": "Alerts"
+                },
+                {
+                    "group": "molecules",
+                    "name": "alerts-icon",
+                    "title": "Alerts - Icon",
+                    "width": "half"
+                },
+                {
+                    "group": "molecules",
+                    "name": "info-bar",
+                    "title": "Info Bar"
+                },
+                {
+                    "name": "hero",
+                    "title": "Hero",
+                    "group": "molecules"
+                },
+                {
+                    "group": "molecules",
+                    "name": "search",
+                    "title": "Search"
+                },
+                {
+                    "group": "molecules",
+                    "name": "location-hours",
+                    "title": "Location Hours"
+                },
+                {
+                    "name": "modal-static",
+                    "title": "Modal - Static",
+                    "width": "half",
+                    "group": "molecules"
+                },
+                {
+                    "group": "molecules",
+                    "name": "modal-trigger",
+                    "title": "Modal - Trigger",
+                    "width": "half"
+                },
+                {
+                    "group": "molecules",
+                    "name": "modal-location-selector",
+                    "title": "Modal - Location Selector"
+                },
+                {
+                    "group": "molecules",
+                    "name": "coral-locations-modal",
+                    "title": "Coral Locations Modal"
+                }
+            ]
+        },
+        {
+            "name": "organisms",
+            "title": "Organisms",
+            "components": [
+                {
+                    "group": "organisms",
+                    "name": "global-header",
+                    "title": "Global Header"
+                },
+                {
+                    "group": "organisms",
+                    "name": "global-footer",
+                    "title": "Global Footer"
+                },
+                {
+                    "group": "organisms",
+                    "name": "sidebar",
+                    "title": "Sidebar"
+                },
+                {
+                    "group": "organisms",
+                    "name": "comments",
+                    "title": "Comments"
+                },
+                {
+                    "group": "organisms",
+                    "name": "article",
+                    "title": "Article"
+                },
+                {
+                    "group": "organisms",
+                    "name": "food-menu",
+                    "title": "Food Menu"
+                }
+            ]
+        }
+    ],
+    "version": "1.9.5"
+}

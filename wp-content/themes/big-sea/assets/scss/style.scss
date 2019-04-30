@@ -1,0 +1,47 @@
+/*!
+Theme Name: Big Sea
+Theme URI: http://bigsea.co
+Author: Big Sea
+Author URI: http://bigsea.co
+Description: A base WordPress theme built with Twig, Timber and Underscores.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: big-sea
+Tags:
+*/
+
+// Normalize
+@import "normalize-scss/sass/normalize/import-now";
+
+// The Bourbon core library gets included as a dependency in the gruntfile
+
+// Bourbon Neat mixin library
+// We're only grabbing the parts that we need since we aren't using
+// Neat's built-in grid system.
+@import "bourbon-neat/app/assets/stylesheets/functions/private";
+@import "bourbon-neat/app/assets/stylesheets/functions/new-breakpoint";
+@import "bourbon-neat/app/assets/stylesheets/settings/grid";
+@import "bourbon-neat/app/assets/stylesheets/settings/visual-grid";
+@import "bourbon-neat/app/assets/stylesheets/grid/media";
+@import "bourbon-neat/app/assets/stylesheets/grid/visual-grid";
+@import "bourbon-neat/app/assets/stylesheets/mixins/clearfix";
+
+// Variables
+@import "variables";
+
+// Vendor
+@import "vendor/**/*.scss";
+
+// Mixins
+@import "mixins/**/*.scss";
+
+// Flexgrid
+@import "flexbox-grid-mixins/sass/flexbox-grid-mixins";
+
+// Structure
+// We want to insure this comes before all other patterns
+@import "patterns/structure";
+
+// Patterns
+@import "patterns/**/*.scss";

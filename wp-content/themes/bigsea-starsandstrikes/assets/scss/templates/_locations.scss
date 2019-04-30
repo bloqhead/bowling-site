@@ -1,0 +1,111 @@
+//
+// Locations
+//
+
+// Locations archive
+body.post-type-archive-locations,
+body.post-type-archive-locations.has-sidebar {
+
+  #page-wrapper, #content {
+    display: block;
+  }
+
+  #content {
+    margin: 0;
+    flex: 100%;
+  }
+}
+
+// Locations template
+
+body.locations-template-default {
+
+  #page-wrapper > .widget-area {
+    transform: translateY(0);
+  }
+}
+
+// Locations single
+
+body.single-locations {
+
+  // main hero
+  #masthead + .hero {
+    margin-bottom: 70px;
+  }
+}
+
+// Locations CTA groups
+
+.location__cta-group {
+
+  // group at top
+  &.location__cta-group--top > div {
+    padding-bottom: 45px;
+    margin-bottom: 45px;
+    border-bottom: 1px solid $gray-medium;
+  }
+
+  // group at bottom
+  &.location__cta-group--bottom > div {
+    padding-top: 45px;
+    padding-bottom: 45px;
+    margin-top: 45px;
+    border-top: 1px solid $gray-medium;
+  }
+}
+
+// Daily specials group
+
+.location__daily-specials {
+
+}
+
+.location__event-group {
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $gray-medium;
+    padding-bottom: 35px;
+    margin-bottom: 35px;
+  }
+
+  .info-bar__extra {
+    font-size: 18px;
+    color: $slate-blue;
+  }
+}
+
+// Daily specials item
+
+.location__daily-special {
+  margin-bottom: 38px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Location attractions
+
+.location__attractions-group {
+
+  .read-more {
+    display: none;
+  }
+}
+
+@media (max-width: 959px) {
+  .location__attractions-group,
+  .location__cta-group {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .location__cta-group {
+
+    [class*="grid__col"]:not(:last-of-type) .card {
+      margin-bottom: 20px;
+    }
+  }
+}

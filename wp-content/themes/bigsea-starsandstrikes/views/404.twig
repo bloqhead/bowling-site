@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--has-gradient">
+    <div class="hero__inner">
+      <h1 class="hero__big-title">Whoops! Looks like a gutter ball.</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+
+  <div class="four-oh-four__intro">
+    <p>The page you were looking for has since been removed or doesn't exist.</p>
+  </div> <!-- .four-oh-four__intro -->
+
+  <div class="four-oh-four__search">
+    <header class="four-oh-four__lined-title">
+      <h3>Search</h3>
+    </header>
+    {{ fn( 'get_search_form' ) }}
+  </div> <!-- .four-oh-four__search -->
+
+{% endblock %}

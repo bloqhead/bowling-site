@@ -1,0 +1,61 @@
+{% block html_head_container %}
+  {% include "views/header.twig" %}
+
+  {% include "partials/tracking.twig" %}
+
+	{% block head %}
+  {% endblock %}
+
+  </head>
+{% endblock %}
+
+	<body class="{{body_class}}">
+		<div id="primary" class="content-area">
+
+			<main id="page" class="site" role="main">
+				<a class="skip-link screen-reader-text" href="#content">
+					{{ __( 'Skip to content', 'big-sea' ) }}
+        </a>
+
+        <div class="inner-content-wrapper">
+
+          <header id="masthead" class="site-header masthead" role="banner">
+          {% block header %}
+            {% include "views/site-header.twig" %}
+          {% endblock %}
+          </header> <!-- #masthead -->
+
+          {% block masthead %}{% endblock %}
+
+          {% block beforecontent %}{% endblock %}
+
+          <div id="page-wrapper" class="inner-wrapper">
+
+            <div id="content" class="site-content">
+              {% block content %}
+                <p>Sorry, no content.</p>
+              {% endblock %}
+            </div><!-- #content -->
+
+            {% block sidebar %}{% endblock %}
+
+          </div><!-- #page-wrapper -->
+
+          {% block aftercontent %}{% endblock %}
+
+        </div> <!-- .inner-content-wrapper -->
+
+			{% block footer %}
+        {% include "views/site-footer.twig" %}
+			{% endblock %}
+
+			</main><!-- #page -->
+
+			<a href="#" class="scroll-to-top scroll-to-top--hidden">Top</a>
+
+		</div><!-- #primary -->
+
+		{{function('wp_footer')}}
+    {% include "partials/footer-tracking.twig" %}
+	</body>
+</html>

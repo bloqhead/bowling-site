@@ -1,0 +1,39 @@
+<div id="comments" class="comments-area">
+	{% if post.comment_status != 'closed' %}
+
+	<h2 class="comments-title">
+		{{ '%1$s comment(s) on "%2$s"' | format( fn('get_comments_number'), fn('get_the_title') ) }}
+	</h2>
+
+	{# @todo: turn this into a standalone function for easy reuse #}
+	{% if fn( 'get_comment_pages_count' ) > 1 and fn( 'get_option', 'page_comments' ) %}
+	<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
+		<h2 class="screen-reader-text">{{ __( 'Comment navigation', 'big-sea' ) }}</h2>
+		<div class="nav-links">
+			<div class="nav-previous">{{ fn(' previous_comments_link', __( 'Older Comments', 'big-sea' ) ) }}</div>
+			<div class="nav-next">{{ fn( 'next_comments_link', __( 'Newer Comments', 'big-sea' ) ) }}</div>
+		</div><!-- .nav-links -->
+	</nav><!-- #comment-nav-above -->
+	{% endif %}
+
+	<div class="respond">
+		{{ fn( 'comment_form' ) }}
+	</div> <!-- .respond -->
+
+	<ol class="comment-list">
+		{% for comment in post.get_comments() %}
+		<li class="comment {{comment.comment_type}}" id="comment-{{comment.ID}}">
+			<h5 class="comment__author">{{comment.author.name}} says</h5>
+			<div class="comment__content">
+				{{comment.comment_content | wpautop}}
+			</div>
+		</li>
+		{% endfor %}
+	</ol> <!-- .comment-list -->
+
+	{% else %}
+
+	<p class="comments__closed">{{ __( 'Comments are closed.', 'big-sea' ) }}</p>
+
+	{% endif %}
+</div> <!-- #comments -->

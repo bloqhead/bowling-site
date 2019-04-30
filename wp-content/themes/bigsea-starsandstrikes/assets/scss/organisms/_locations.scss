@@ -1,0 +1,141 @@
+//
+// Location Features
+//
+// This is seen on a lot of pages.
+//
+
+.location-features {
+  background: $starburst-background;
+  background-size: cover;
+  padding: 20px 0;
+  color: #fff;
+
+  .media__inner {
+    margin: 0 auto;
+  }
+}
+
+.location-features__feature-buttons {
+
+  > .grid-center > div:not(:last-of-type) {
+    margin-bottom: 15px;
+  }
+
+  .active {
+
+    i {
+      color: $yellow;
+    }
+  }
+}
+
+.location-features__legend {
+
+  i.active {
+    color: $yellow;
+  }
+}
+
+.location-features__legend-content {
+  text-align: center;
+}
+
+.location-features__legend-title {
+  font-family: $open-sans;
+  font-size: 11px;
+  line-height: 24px;
+  color: $yellow;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(#000, 0.2);
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  a {
+    color: inherit;
+  }
+}
+
+.location-features__legend-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 0;
+  margin: 0 0 15px 0;
+
+  li {
+    padding: 0 5px;
+  }
+}
+
+.hours__virtual-tour-cta {
+
+  i:first-of-type {
+    font-size: 32px;
+    line-height: 0;
+    margin-right: 12px;
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 1012px) {
+  .hours__virtual-tour-cta {
+    font-size: 14px;
+  }
+}
+
+@media($bp-medium) {
+  .location-features__feature-buttons > .grid-center > div:not(:last-of-type) {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .location-features__legend-list {
+    margin: 0 0 60px 0;
+  }
+
+  .location-features {
+    padding: 75px 0;
+  }
+
+  .location-features__legend-title {
+    font-size: 16px;
+  }
+
+  .location-features__legend-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: space-between;
+    justify-content: center;
+
+    .location-features__item {
+      width: 50%;
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  $i: 20px;
+  .location-features__legend-content {
+    margin: 0 -#{$i};
+
+    .location-features__item {
+      width: auto;
+      flex-grow: 1;
+      margin: 0 $i;
+    }
+  }
+}
+
+@media (max-width: 1295px) {
+  .location-features {
+
+    .media__inner {
+      padding: $container-edge-spacing;
+    }
+  }
+}

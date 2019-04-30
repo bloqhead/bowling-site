@@ -1,0 +1,16 @@
+<div class="location-features__feature-buttons">
+
+  {% for attraction in attractions %}
+      <div class="card card--feature card--{{ attraction.get_field('icon') }}" style="background-image: url({{ fn('bsd_getImage', attraction.thumbnail, 'feature-bar-image-2x') }})">
+        <a href="{{ attraction.link }}" class="card__link">
+          <div class="card__inner">
+            <div class="card__icon">
+              <i class="ss-icon-{{ attraction.get_field('icon') }}"></i>
+            </div>
+            <h3 class="card__title">{{ attraction.title }}</h3>
+          </div>
+        </a>
+      </div>
+  {% endfor %}
+  
+</div>  <!-- .location-features__feature-buttons -->

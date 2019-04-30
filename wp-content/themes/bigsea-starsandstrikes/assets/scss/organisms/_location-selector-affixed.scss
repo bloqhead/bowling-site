@@ -1,0 +1,228 @@
+//
+// Affixed location selector
+//
+
+$als-bg-color: $light-navy !default;
+$als-padding: 20px !default;
+$als-transition-timing: 300ms !default;
+$als-flyout-width: 250px !default;
+
+.affixed-location-selector {
+	// we don't want to show until the document is loaded
+	display: none !important;
+
+	position: fixed;
+	top: 0; left: 0;
+	z-index: 9999; // has to be 1 above .hamburger
+	width: 100%;
+
+	// once the document is loaded, this class gets added and we
+	// can now show the location selector
+	html.show-affixed-location-selector & {
+		display: block !important;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.affixed-location-selector__initial {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $als-bg-color;
+	font-size: 14px;
+	color: #fff;
+}
+
+.affixed-location-selector__col {
+	padding: $als-padding;
+}
+
+.affixed-location-selector__changer {
+	@include button-base;
+	position: relative;
+	line-height: 14px;
+	font-size: 10px;
+	height: 34px;
+  padding: 10px 15px;
+	overflow: hidden;
+
+	i, span {
+		display: block;
+		transition: transform 300ms ease-in-out;
+	}
+
+	i {
+		font-size: 22px;
+		line-height: 1;
+		transform: translateY(-40px);
+	}
+
+	span {
+		transform: translateY(-21px);
+	}
+
+	// States
+	&.is-active {
+
+		i {
+			transform: translateY(-3px);
+		}
+
+		span {
+			transform: translateY(40px);
+		}
+	}
+}
+
+.affixed-location-selector__content {
+	position: absolute;
+	top: 100%; left: 0;
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	background-color: $als-bg-color;
+	padding: 0 $als-padding $als-padding $als-padding;
+	transition:
+		opacity 360ms ease-in-out,
+		visibility 360ms ease-in-out;
+
+	// States
+	&.is-expanded {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	@media (max-width: 1023px) {
+		height: 100vh;
+	}
+}
+
+.affixed-location-selector__locations-list {
+	list-style: none;
+	margin: 0 auto;
+	padding: calc(#{$als-padding} / 2) 0 0 0;
+	max-width: 960px;
+	border-top: 1px solid darken($als-bg-color, 12%);
+
+	li {
+		padding: 5px 0;
+		margin: 0;
+	}
+
+	a {
+		display: block;
+		color: $yellow;
+
+		&:hover, &:active, &:focus {
+			color: #fff;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		font-size: 18px;
+
+		a {
+			display: inline-block;
+		}
+
+		li {
+			padding: 20px;
+		}
+	}
+}
+
+// Tooltip version
+
+.affixed-location-selector__tooltip-container {
+	position: relative;
+}
+
+.affixed-location-selector__tooltip {
+	position: absolute;
+	top: 100%; right: 0;
+	z-index: 9999;
+	opacity: 0;
+	visibility: hidden;
+	background-color: $als-bg-color;
+	padding: $als-padding;
+	font-size: 14px;
+	text-align: left;
+	transition:
+		opacity $als-transition-timing ease-in-out,
+		visibility $als-transition-timing ease-in-out;
+
+	// States
+	&.is-expanded {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&.is-updating {
+		
+	}
+
+	@media (max-width: 959px) {
+		width: 100vw;
+	}
+
+	@media (min-width: 960px) {
+		top: 240%;
+		width: $als-flyout-width;
+		border-radius: $base-radius;
+
+		&:before {
+			content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -13px;
+      left: calc(#{$als-flyout-width} - 84px);
+      border: 13px solid transparent;
+      border-bottom: 26px solid $als-bg-color;
+      border-top: 0 solid transparent;
+		}
+	}
+}
+
+.affixed-location-selector__locations-list-simple {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	font-weight: bold;
+
+	li {
+		display: block;
+		padding: 3px 0;
+		margin: 0;
+
+		&:not(:last-of-type) {
+			border-bottom: 1px solid darken($als-bg-color, 12%);
+		}
+		
+		a {
+			color: $yellow;
+			text-decoration: underline;
+
+			&:hover, &:focus {
+				color: #fff;
+			}
+		}
+
+		// calculated distance
+		span {
+			display: block;
+			color: #fff;
+			font-size: 12px;
+		}
+	}
+}

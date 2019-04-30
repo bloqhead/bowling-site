@@ -1,0 +1,251 @@
+//
+// Hours
+//
+
+.hours {
+  background-color: #fff;
+  color: $charcoal;
+  padding: 32px;
+}
+
+.hours__stack {
+  border-bottom: 1px solid $gray-medium;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+}
+
+.hours__icon {
+  display: none;
+}
+
+.hours__content {
+  font-weight: bold;
+}
+
+.hours__content--large {
+  font-size: 24px;
+}
+
+.hours__table {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  font-weight: normal;
+  white-space: nowrap;
+
+  td {
+    padding: 5px;
+  }
+
+  td:first-child {
+    text-align: right;
+    white-space: nowrap;
+    width: 65px;
+    // width: 25%;
+  }
+}
+
+.hours__header {
+  text-align: center;
+  display: block;
+  background-color: $gold;
+  color: $light-navy;
+  text-align: center;
+  margin: -32px -32px 32px -32px;
+  position: relative;
+
+  .hours__tooltip {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    right: 10px;
+    border-radius: 15px;
+    text-align: left;
+    background: #f3f3f3;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 2px 4px 0 rgba(#000, 0.2);
+
+    &:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -13px;
+      left: 6px;
+      border: 13px solid rgba(0, 0, 0, 0);
+      border-bottom: 26px solid #f3f3f3;
+      border-top: 0 solid rgba(0, 0, 0, 1);
+    }
+
+    .hours__tooltip-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      color: $light-navy;
+
+      &:hover {
+        text-decoration: none;
+        color: $slate-blue;
+      }
+    }
+
+    p {
+      margin: 0;
+      color: $charcoal;
+    }
+
+    .hours__tooltip-header {
+      font-size: 20px;
+      line-height: 24px;
+      color: $light-navy;
+      margin: 0 0 5px;
+    }
+  }
+
+  .notice {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 13px;
+    border-radius: 50%;
+    background: #ee4d3d;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
+
+    i {
+      font-size: 18px;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(#000, 0.3);
+    }
+  }
+
+  h2 {
+    font-size: 23px;
+    margin: 0;
+    padding: 10px 0;
+  }
+}
+
+.hours__footer {
+  text-align: center;
+}
+
+.hours--location-based {
+
+  .hours__stack:last-of-type {
+    margin-bottom: 0;
+    border: 0;
+  }
+
+  .hours__footer {
+    margin: 0 -32px -32px -32px;
+
+    .btn {
+      display: block;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+.hours + .btn {
+  display: none;
+}
+
+@media ($bp-medium) {
+  .hours {
+    border-radius: $base-radius;
+    background-color: rgba(#fff, 0.85);
+    box-shadow: 0 5px 15px 0 rgba(#000,0.3);
+
+    &.with-virtual-tour {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .hours__footer {
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .hours, .hours__virtual-tour-cta {
+    max-width: 354px;
+  }
+
+  .hours__header {
+
+    .hours__tooltip {
+      left: -290px;
+      width: 270px;
+      top: 0;
+
+      &:after {
+        top: 16px;
+        left: 99%;
+        border: 13px solid rgba(0, 0, 0, 0);
+        border-left: 26px solid #f3f3f3;
+        border-right: 0 solid rgba(0, 0, 0, 1);
+      }
+    }
+  }
+
+  .hours + .btn {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: block;
+  }
+
+  .hours__header {
+    border-radius: $base-radius $base-radius 0 0;
+  }
+}
+
+@media ($bp-large) {
+  .hours + .btn {
+    margin-right: 13px;
+  }
+
+  .hours__header {
+
+    .notice {
+      top: 20px;
+    }
+
+    .hours__tooltip {
+
+      &:after {
+        top: 26px;
+      }
+    }
+  }
+}
+
+@media (min-width: 330px) {
+  .hours__stack {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .hours__content {
+    width: 85%;
+  }
+
+  .hours__icon {
+    display: block;
+    width: 15%;
+    font-size: 24px;
+    color: $slate-blue;
+  }
+
+  .hours__table {
+    transform: translateX(-6%);
+  }
+}

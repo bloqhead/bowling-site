@@ -1,0 +1,77 @@
+{% if selectedLocation.get_field('external_link_virtual') %}
+<div class="hours with-virtual-tour">
+{% else %}
+<div class="hours">
+{% endif %}
+  <header class="hours__header">
+    <h2>
+      {% if selectedLocation.get_field('notice') %}
+        <span class="notice"><i class="fas fa-exclamation"></i></span>
+      {% endif %}
+      {{ selectedLocation.title }}
+    </h2>
+    {% if selectedLocation.get_field('notice') %}
+    <div class="hours__tooltip">
+      <a class="hours__tooltip-close" href="#">&times;</a>
+      <h3 class="hours__tooltip-header">Notice</h3>
+      <p>{{ selectedLocation.get_field('notice') }}</p>
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="hours__stack">
+    <div class="hours__icon">
+      <i class="fas fa-phone"></i>
+    </div>
+    <div class="hours__content hours__content--large">
+      <a href="tel:{{ selectedLocation.get_field('phone_number')|apply_filters('phone_href') }}">{{ selectedLocation.get_field('phone_number') }}</a>
+    </div>
+  </div>
+
+  <div class="hours__stack">
+    <div class="hours__icon">
+      <i class="fas fa-map-marker"></i>
+    </div>
+    <div class="hours__content">
+      <p class="no-p no-m">
+        {% for address in selectedLocation.get_field('address') %}
+          {{ address.street }}<br>
+          {% if address.suite %}
+            {{ address.suite }}<br>
+          {% endif %}
+          {{ address.city }}, {{ address.state }} {{ address.zip_code }}
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+
+  <div class="hours__stack">
+    <div class="hours__icon">
+      <i class="far fa-clock"></i>
+    </div>
+    <div class="hours__content">
+      <table class="hours__table">
+        {% for hours in selectedLocation.get_field('hours') %}
+          <tr>
+            <td><strong>{{ hours.day }}</strong></td>
+            <td>{{ hours.time_open }} - {{ hours.time_close }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <footer class="hours__footer">
+    <p><a href="{{ locationSelectorPage }}" class="btn btn--secondary btn--small">Change Location</a></p>
+    {% if selectedLocation.get_field('external_link_virtual') %}
+      <p class="mobile-only"><a href="{{ selectedLocation.get_field('external_link_virtual') }}" class="btn btn--secondary btn--small" target="_blank">
+        Virtual Tour
+      </a></p>
+    {% endif %}
+  </footer>
+</div> <!-- .hours -->
+{% if selectedLocation.get_field('external_link_virtual') %}
+<a href="{{ selectedLocation.get_field('external_link_virtual') }}" class="btn btn--secondary hours__virtual-tour-cta" target="_blank">
+  <i class="far fa-eye no-transform"></i> Take a Virtual Tour <i class="fas fa-arrow-right"></i>
+</a>
+{% endif %}

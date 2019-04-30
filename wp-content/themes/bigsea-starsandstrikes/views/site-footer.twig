@@ -1,0 +1,27 @@
+<footer {#id="colophon"#} class="site-footer" role="contentinfo">
+
+  <div class="pre-footer">
+    <div class="inner">
+
+      {% include "menu.twig" with { 'items': footer_menu.get_items, 'menu_id': footer_menu.menu_id } %}
+
+      <div class="site-footer__actions">
+        {% for item in footer_buttons.get_items %}
+          <a href="{{ item.get_link }}" class="btn mr-10 ml-10">{{ item.title }}</a>
+        {% endfor %}
+      </div> <!-- .site-footer__actions -->
+
+      <ul class="social-icons social-icons--light social-icons--inline">
+        <li><a href="{{ link_twitter }}" class="social-icons__link"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="{{ link_facebook }}" class="social-icons__link"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="{{ link_instagram }}" class="social-icons__link"><i class="fab fa-instagram"></i></a></li>
+      </ul> <!-- .social-icons -->
+
+    </div> <!-- .inner -->
+  </div> <!-- .pre-footer -->
+
+  <p class="copyright">
+    &copy; {{ "now" | date('Y') }} | {{site.title}}</a>
+  </p>
+
+</footer> <!-- .site-footer -->

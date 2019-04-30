@@ -1,0 +1,77 @@
+//
+// Basic structure
+//
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+	color: $base-font-color;
+}
+
+// general inner content wrapper
+.inner-wrapper {
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: $inner-wrapper-padding;
+}
+
+// page wrapper
+#page-wrapper {
+	margin: $page-wrapper-margin;
+}
+
+// content area
+#content {
+
+}
+
+// sidebar
+#secondary {
+
+}
+
+// if there is a sidebar present...
+@include media($bp-medium) {
+	body.has-sidebar {
+
+		#page-wrapper {
+			@include grid;
+		}
+
+		#content {
+			@include grid-col($col: $content-flex-col-width, $gutter: $default-grid-gutter);
+		}
+
+		#secondary {
+			@include grid-col($col: $sidebar-flex-col-width, $gutter: $default-grid-gutter);
+		}
+	}
+}
+
+// header
+#masthead {
+	background: $masthead-background;
+}
+
+@include media($bp-medium) {
+	#masthead .inner-wrapper {
+		@include grid($justify-content: center, $align-items: center);
+	}
+
+	.brand {
+		@include grid-col($col: $masthead-brand-flex-col-width, $gutter: $default-grid-gutter);
+	}
+
+	#site-navigation {
+		@include grid-col($col: $masthead-navigation-flex-col-width, $gutter: $default-grid-gutter);
+	}
+
+	.brand, #site-navigation {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}

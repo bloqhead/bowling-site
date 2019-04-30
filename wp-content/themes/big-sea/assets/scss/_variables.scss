@@ -1,0 +1,32 @@
+//
+// Project variables
+//
+
+// dimensions
+$max-width: 1040px !default;
+$pulldown-menu-width: 200px !default;
+
+// fonts
+$base-font-weight: normal !default;
+$base-font-size: 100% !default;
+$base-line-height: 1.3 !default;
+$base-font-color: #444 !default;
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+// breakpoints
+$bp-small: new-breakpoint(min-width 320px, max-width 799px) !default;
+$bp-medium: new-breakpoint(min-width 800px, max-width 991px) !default;
+$bp-medium-large: new-breakpoint(min-width 992px, max-width 1199px) !default;
+$bp-large: new-breakpoint(min-width 1200px) !default;
+
+// grid, content areas
+$default-grid-gutter: 2% !default;
+$masthead-brand-flex-col-width: 3 !default;
+$masthead-navigation-flex-col-width: 9 !default;
+$content-flex-col-width: 8 !default;
+$sidebar-flex-col-width: 4 !default;
+$page-wrapper-margin: 2em auto 0 auto !default;
+
+// misc
+$inner-wrapper-padding: 0 1.5em !default;
+$masthead-background: #eee !default;

@@ -1,0 +1,21 @@
+<!--
+  - the element for opening a modal has to have the `data-lity` attribute
+  - href has to contain the target's ID
+-->
+<a href="#coral-location-modal-wrapper" data-lity">Open Modal</a>
+
+<!-- the `lity-hide` class must be present on the modal -->
+<div id="coral-location-modal-wrapper" class="lity-hide">
+  <div id="coral-location-modal" class="card card--modal coral__selector-modal">
+    <div class="card__inner">
+      <header class="card__header card__header--alt">
+        <h3 class="card__title">Join Birthday Club</h3>
+      </header>
+      <div class="card__content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dolorem illo voluptates sapiente blanditiis necessitatibus, labore ea quae consequatur odio dolores cum magnam itaque aspernatur beatae, non doloribus. Ut, fugiat!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="#coral-location-modal" class="coral__selector-modal-close lity-close" data-lity">Close Modal</a>

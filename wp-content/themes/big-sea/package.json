@@ -1,0 +1,29 @@
+{
+  "name": "big-sea-timber-base-theme",
+  "friendly_name": "Big Sea Timber Base Theme",
+  "browsersync_port": 3000,
+  "version": "0.1.0",
+  "description": "A base WordPress theme built with Twig, Timber and _s.",
+  "main": "gruntfile.js",
+  "license": "WTFPL",
+  "private": true,
+  "devDependencies": {
+    "bourbon": "latest",
+    "bourbon-neat": "latest",
+    "flexbox-grid-mixins": "latest",
+    "grunt": "latest",
+    "grunt-browser-sync": "latest",
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-imagemin": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-sass-globbing": "latest",
+    "grunt-svgmin": "latest",
+    "imagemin": "latest",
+    "normalize-scss": "^7.0.0",
+    "time-grunt": "latest"
+  }
+}

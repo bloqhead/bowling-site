@@ -1,0 +1,148 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+<section class="hero hero--has-overlay hero--has-video" style="background-image:url('{{ fn('bsd_getImage', post.get_field('masthead'), 'page-masthead', post.thumbnail) }}');">
+
+  <div class="hero__inner">
+    <div class="grid-ng-center">
+      <div class="grid__col-ng-8">
+        <h3 class="hero__sub-title">{{ selectedLocation.title }}</h3>
+        <h1 class="hero__big-title">Get Away<br> And Play</h1>
+      </div>
+      <div class="grid__col-ng-4">
+        <div class="desktop-only">
+          {% include "partials/hours.twig" %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+
+<section class="bucket mobile-only mobile-cta-buttons">
+  <div class="bucket__inner">
+    {% include "partials/booking-action-buttons.twig" %}
+    {% include "partials/hours.twig" %}
+  </div>
+</section> <!-- .bucket -->
+
+{#
+@todo we will want to eventually move this
+so that it's built into the back end
+#}
+{% if selectedLocation.slug == 'smyrna' %}
+<section class="hero hero--blue-burst">
+  <div class="hero__inner">
+    <h2 class="hero__title">
+			We are currently hiring at our <br>
+			new {{ selectedLocation.name }} location!
+		</h2>
+    <p class="hero__blurb">
+      <a class="btn btn--alt" href="https://bowl.starsandstrikes.com/smyrna-job-fair" target="_blank">
+        Get Job Fair Information <i class="fas fa-arrow-right"></i>
+      </a>
+    </p>
+  </div>
+</section>
+<!-- .hero--blue-burst -->
+{% endif %}
+
+<section class="hero better-birthday hero__floater-container">
+  <div class="hero__inner">
+    <div class="grid-ng-center">
+      <div class="grid__col-ng-6">
+        <img
+          src="{{theme.link}}/assets/img/bday_cutout_final.png"
+          alt="A group of kids excited about a birthday" class="hero__floater"
+          srcset="{{theme.link}}/assets/img/bday_cutout_final.png 1x, {{theme.link}}/assets/img/bday_cutout_final@2x.png 2x"
+        >
+      </div>
+      <div class="grid__col-ng-6 grid__col-right">
+        <h2 class="hero__title">Have a better<br> birthday.</h2>
+        <p>
+          <a href="{{ birthdayPackageAnchor }}" class="btn btn--has-icon">
+            Book A Party <i class="fas fa-arrow-right"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section> <!-- .hero -->
+
+<section class="hero have-fun hero__floater-container">
+  <div class="hero__inner">
+    <div class="grid-ng-center">
+      <div class="grid__col-ng-6 grid__col-left">
+        <h2 class="hero__title">Have fun with the<br> ones you love.</h2>
+        <p>
+          <a href="{{ selectedLocation.get_field('external_link_lanes') }}" class="btn btn--has-icon">
+            Reserve A Lane <i class="fas fa-arrow-right"></i>
+          </a>
+        </p>
+      </div>
+      <div class="grid__col-ng-6">
+        <img
+          src="{{theme.link}}/assets/img/family_bowling_cutout@2x.png"
+          alt="Girls in a bumper car" class="hero__floater"
+          srcset="{{theme.link}}/assets/img/family_bowling_cutout.png 1x, {{theme.link}}/assets/img/family_bowling_cutout@2x.png 2x"
+          >
+      </div>
+    </div>
+  </div>
+</section> <!-- .hero -->
+
+<section class="media daily-specials">
+  <div class="media__inner">
+
+    <header class="media__header media__header--fancy">
+      <div class="grid-ng-center">
+        <div class="grid__col-ng-9">
+          <h2>Daily Specials <span class="desktop-only">at {{ selectedLocation.title }}</span></h2>
+        </div>
+        <div class="grid__col-ng-3">
+          <a href="{{ link_viewAll_specials }}">View All</a>
+        </div>
+      </div>
+    </header> <!-- .media__header -->
+    {%
+      include "partials/list-daily-specials.twig" with {
+        'dailySpecials': upcomingSpecials,
+        'locationName': selectedLocation.name
+      }
+    %}
+  </div>
+</section> <!-- .media .daily-specials -->
+
+<section class="media featured-items">
+  <div class="media__inner">
+    <header class="media__header media__header--fancy">
+      <div class="grid-ng-center">
+          <div class="grid__col-ng-9">
+            <h2>Featured <span class="desktop-only">at Stars and Strikes</span></h2>
+          </div>
+          <div class="grid__col-ng-3">
+            <a href="{{ link_viewAll_featured }}">View All</a>
+          </div>
+      </div>
+    </header> <!-- .media__header -->
+    {%
+      include "partials/list-featured-promotions.twig" with {
+        'locationName': selectedLocation.name
+      }
+    %}
+  </div>
+</section>
+
+<section class="media location-features">
+  <div class="media__inner">
+    <div class="media__content">
+      {% include "partials/locations-attractions-buttons.twig" %}
+      {% include "partials/locations-attractions-legend.twig" %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

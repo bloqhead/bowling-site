@@ -1,0 +1,14 @@
+{% if sidebar %}
+  <aside id="secondary" class="widget-area" role="complementary">
+    {% if post.get_field('birthday_packages') %}
+      <section class="widget">
+        {% for package in post.get_field('birthday_packages') %}
+          {% include 'partials/packages/general.twig' %}
+        {% endfor %}
+      </section>
+    {% else %}
+      {{sidebar}}
+    {% endif %}
+  </aside><!-- #secondary -->
+{% endif %}
+            

@@ -1,0 +1,110 @@
+//
+// Buttons
+//
+
+@mixin button-base {
+	display: inline-block;
+  border-radius: $base-radius;
+  padding: 18px 25px;
+  border: 0;
+  cursor: pointer;
+  font-size: $base-font-size;
+  font-weight: 700;
+  letter-spacing: $base-letter-spacing;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none !important;
+  transition: $base-transition;
+  @include cleartext;
+
+  @include animated-gradient(
+    $transition: $base-transition,
+    $assembledStaticGradient: $gradient-yellow,
+    $assembledHoverGradient: $gold
+  );
+
+  &, &:link, &:visited {
+    color: $charcoal;
+  }
+}
+
+@mixin global-button {
+  @include button-base;
+
+  i, svg {
+    transition: inherit;
+    display: inline-block;
+  }
+
+  &:hover {
+
+    i:not(.no-transform), svg:not(.no-transform) {
+      transform: translateX(5px);
+    }
+  }
+}
+
+#{$all-buttons}, .btn, .button {
+  @include global-button;
+}
+
+.btn--secondary {
+
+  &, &:link, &:visited {
+    color: #fff;
+  }
+
+  @include animated-gradient(
+    $transition: $base-transition,
+    $assembledStaticGradient: $gradient-blue,
+    $assembledHoverGradient: $slate-blue
+  );
+}
+
+.btn--block {
+  display: block;
+}
+
+.btn--small, .btn--smaller {
+  line-height: 14px;
+}
+
+.btn--small {
+  font-size: 10px;
+  padding: 15px 20px;
+}
+
+.btn--smaller {
+  font-size: 10px;
+  padding: 10px 15px;
+}
+
+.btn--large, .btn--lrg {
+  font-size: 20px;
+}
+
+.btn--basic {
+  border-radius: 0;
+  border-top: 5px solid rgba(#fff, 0.75);
+  text-align: left;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.btn--alt {
+  &, &:link, &:visited {
+    color: #fff;
+  }
+
+  @include animated-gradient(
+    $transition: $base-transition,
+    $assembledStaticGradient: $gradient-red,
+    $assembledHoverGradient: $crimson
+  );
+}
+
+// for when someone decides to put them side-by-side
+// in page content.
+.btn + .btn {
+  margin-top: 20px;
+}

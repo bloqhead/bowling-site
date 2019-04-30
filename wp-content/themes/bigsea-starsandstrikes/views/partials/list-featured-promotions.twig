@@ -1,0 +1,55 @@
+
+<div class="media__content">
+  {% if hasPromotions %}
+    <section class="hero hero--has-overlay" style="background-image:url({{ fn('bsd_getImage', primaryFeaturedPromotion.thumbnail, 'feature-bar-image-2x') }})">
+      <div class="hero__inner">
+        <div class="grid-ng-center">
+          <div class="grid__col-ng-12">
+              <h2 class="hero__title">{{ primaryFeaturedPromotion.title }}</h2>
+              <p>
+                <a href="{{ primaryFeaturedPromotion.link }}" class="btn btn--has-icon">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+              </p>
+          </div>
+        </div>
+      </div>
+    </section> <!-- .hero -->
+
+    <div class="grid">
+      {% for current in featuredPromotions %}
+        <div class="grid__col-4">
+          <div class="card card--media">
+              <div class="card__inner">
+                <div class="card__content">
+                  <div class="card__faux-image" style="background-image:url('{{ fn('bsd_getImage', current.thumbnail, 'basic-square-2x') }}');">
+                    <img src="{{ fn('bsd_getImage', current.thumbnail, 'basic-square-2x') }}" alt="{{ current.thumbnail.alt }}">
+                  </div>
+                </div>
+                <footer class="card__footer">
+                  <h3 class="card__title">{{ current.title }}</h3>
+                  <a href="{{ current.link }}">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                  </a>
+                </footer>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="grid">
+      <div class="grid__col-12">
+        <div class="card card--media">
+          <div class="card__inner">
+            <footer class="card__footer">
+              <h3 class="card__title mt-20">No Featured Promotions found for {{ locationName }}</h3>
+              <p>Please check back again soon!</p>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div> <!-- .media__content -->
+

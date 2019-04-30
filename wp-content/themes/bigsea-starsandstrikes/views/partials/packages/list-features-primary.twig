@@ -1,0 +1,13 @@
+
+<div class="{{ class }}">
+    {% if package.get_field('features_primary') %}
+        <ul class="icon-list">
+            {% for primary_feature in package.get_field('features_primary') %}
+                <li>
+                    <i class="ss-icon-{{ primary_feature.icon }}"></i>
+                    <span>{{ primary_feature.text }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

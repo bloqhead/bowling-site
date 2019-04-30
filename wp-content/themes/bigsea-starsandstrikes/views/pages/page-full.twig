@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block masthead %}
+  <section class="hero hero--large hero--has-gradient"{% if post.get_thumbnail %} style="background-image:url('{{ fn('bsd_getImage', post.get_field('masthead'), 'page-masthead', post.thumbnail) }}');"{% endif %}>
+    <div class="hero__inner">
+      <h1 class="hero__big-title">{{post.title}}</h1>
+    </div>
+  </section> <!-- .hero -->
+{% endblock %}
+
+{% block content %}
+	<section class="page-section page-section--{{ post.post_name }}">
+		<div class="page-section__inner">
+			<div class="page-section__content">
+				{{ post.content }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

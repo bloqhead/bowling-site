@@ -1,0 +1,29 @@
+<article class="teaser teaser-{{post.post_type}} grid__col-4" id="teaser-{{post.ID}}">
+  {% block content %}
+    <div class="card card--media card--no-radius">
+      <div class="card__inner">
+        {# <header class="card__header">
+          <h4 class="card__utility-title">Sunday</h4>
+        </header> #}
+        <div class="card__content">
+        {% if post.get_field('archive_image') %}
+          {% set archiveImage = TimberImage(post.get_field('archive_image')) %}
+          <img src="{{ archiveImage.src('basic-post-image-2x') }}" alt="{{ archiveImage.alt }}" />
+        {% else %}
+          <img src="{{ post.thumbnail.src('basic-post-image-2x') }}" alt="{{ post.thumbnail.alt }}" />
+        {% endif %}
+        </div>
+        <footer class="card__footer">
+          <h3 class="card__title">{{post.title}}</h3>
+          {#
+            This navigates to the location's detail page 
+            and also sets the site to said location
+          #}
+          <a href="{{post.link}}?cl-location={{post.id}}">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </footer>
+      </div>
+    </div> <!-- .card -->
+  {% endblock %}
+</article>

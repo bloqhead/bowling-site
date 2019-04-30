@@ -1,0 +1,170 @@
+//
+// Lists
+//
+
+@mixin list-icon-bullet {
+  position: relative;
+  margin-bottom: 33px;
+
+  &:before {
+    $i: 12px;
+    position: absolute;
+    left: -40px; top: 3px;
+    display: inline-block;
+    content: "";
+    background: transparent url("assets/img/star_blue_alt.svg") no-repeat center;
+    background-size: $i $i;
+    width: $i;
+    height: $i;
+  }
+}
+
+// These target only lists with no class or ID
+// This helps prevent pollution of your namespaced elements
+ul:not([class]):not([id]),
+ol:not([class]):not([id]),
+.basic-list {
+  margin: 20px 0;
+  padding: 0;
+
+  li > ul, li > ol {
+    margin: 0;
+  }
+
+  > li {
+    margin: 8px 0 8px 40px;
+  }
+
+  ul > li, ol > li {
+    margin: 5px 0 5px 20px;
+  }
+}
+
+ul:not([class]):not([id]),
+.basic-list {
+  list-style: none;
+
+  > li {
+    @include list-icon-bullet;
+  }
+
+  ul > li {
+
+    &:before {
+      display: none;
+    }
+  }
+}
+
+ol:not([class]):not([id]) {
+
+  ul > li {
+    margin-bottom: 8px;
+
+    &:before {
+      display: none;
+    }
+  }
+}
+
+// Column list
+
+.column-list {
+  list-style: none;
+
+  > li {
+    @include list-icon-bullet;
+  }
+}
+
+@media (min-width: 480px) {
+  $i: 24px;
+  .column-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -#{$i};
+    margin-right: -#{$i};
+
+    > li {
+      margin-left: $i;
+      margin-right: $i;
+      width: calc(50% - #{$i * 2});
+    }
+  }
+}
+
+// Icon list
+
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+
+    &:before {
+      display: none;
+    }
+  }
+
+  i {
+    // color: $red;
+    color: $light-navy;
+    font-size: 18px;
+  }
+}
+
+// Article list
+
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.article-list__item {
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.article-list__link {
+  display: block;
+  text-decoration: none;
+  padding: 10px 0;
+
+  &, &:hover {
+    text-decoration: none;
+  }
+}
+
+.article-list__link--flexy {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+
+  .article-list__title {
+    width: calc(80% - 10px);
+    margin-right: 10px;
+  }
+
+  .article-list__hours {
+    width: 20%;
+  }
+}
+
+.article-list__title {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.article-list__hours {
+  font-size: 14px;
+  color: $gray-medium;
+}

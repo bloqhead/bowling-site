@@ -1,0 +1,63 @@
+//
+// Utility Classes
+//
+
+$util-margin-base: 10 !default;
+
+@for $i from 1 through 5 {
+  $x: $util-margin-base * $i;
+  $n: strip-unit($x);
+
+  // margin
+  .mt-#{$n} { margin-top: #{$x}px !important; }
+  .mb-#{$n} { margin-bottom: #{$x}px !important; }
+  .mr-#{$n} { margin-right: #{$x}px !important; }
+  .ml-#{$n} { margin-left: #{$x}px !important; }
+
+  // padding
+  .pt-#{$n} { padding-top: #{$x}px !important; }
+  .pb-#{$n} { padding-bottom: #{$x}px !important; }
+  .pr-#{$n} { padding-right: #{$x}px !important; }
+  .pl-#{$n} { padding-left: #{$x}px !important; }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// quick and dirty flexbox classes
+
+.flexit {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexit--mobile {
+  
+  @media (max-width: 959px) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  .flexit--row-reverse {
+    flex-direction: row-reverse !important;
+  }
+  
+  .flexit--col-reverse {
+    flex-direction: column-reverse !important;
+  }
+}

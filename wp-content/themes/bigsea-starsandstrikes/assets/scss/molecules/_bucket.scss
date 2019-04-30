@@ -1,0 +1,15 @@
+// 
+// Bucket
+// 
+// A bucket in this context is a general, all-purpose
+// container for sectioning off content.
+// 
+
+.bucket {
+  clear: both;
+}
+
+.bucket__inner {
+  max-width: $max-width;
+  margin: 0 auto;
+}

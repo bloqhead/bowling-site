@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% for post in posts %}
+		{% include ["partials/teaser-"~post.post_type~".twig", "partials/teaser.twig"] %}
+	{% endfor %}
+
+    {% include "partials/pagination.twig" %}
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

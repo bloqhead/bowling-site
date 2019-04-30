@@ -1,0 +1,27 @@
+{% extends "base-barebones.twig" %}
+
+{% block content %}
+	<section class="page-section page-section--{{ post.post_name }}">
+		
+		<div class="location-modal-wrapper">
+
+			<div id="location-modal" class="card card--modal-simple">
+				<div class="card__inner">
+					<header class="card__header">
+						<a href="{{ site.url }}"><img src="{{ theme.path }}/assets/img/logo.png" alt="{{ site.name }}"></a>
+					</header>
+					<div class="card__content">
+						{{ post.content }}
+					</div>
+				</div>
+			</div>
+			<!-- .card--modal -->
+
+		</div>
+
+	</section>
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

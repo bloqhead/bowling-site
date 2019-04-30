@@ -1,0 +1,16 @@
+//
+// Search results
+//
+
+body.search-results {
+
+  &, &.has-sidebar {
+    @include full-width-content;
+
+    #content {
+      max-width: calc(#{$max-width} + #{$error-404-padding});
+      margin: 0 auto;
+      padding: ($error-404-padding * 3) $error-404-padding;
+    }
+  }
+}

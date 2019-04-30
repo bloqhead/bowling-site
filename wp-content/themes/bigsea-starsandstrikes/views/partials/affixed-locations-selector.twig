@@ -1,0 +1,11 @@
+<ul class="affixed-location-selector__locations-list-simple">
+  {% for location in locations %}
+    <li>
+      {# @TODO This has to trigger the location switch, not link to the page. Change it. #}
+      <a href="{{ location.link }}">{{ location.title }}</a>
+      {% if location.distance %}
+        <span>{{ location.distance }} miles away</span>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,22 @@
+<div class="location-features__legend">
+
+  <header class="media__fancy-header">
+    <h4>We Proudly Serve<br> Families In</h4>
+  </header>
+
+  <div class="location-features__legend-content">
+
+    {% for location in locations %}
+      <div class="location-features__item filterable" data-filter-terms='{{ location.get_field('attractions')|apply_filters('post_slugs_json') }}'>
+        <h5 class="location-features__legend-title"><a href="{{ location.link }}">{{ location.title }}</a></h5>
+        <ul class="location-features__legend-list">
+          {% for attraction in location.get_field('attractions') %}
+            <li><i class="ss-icon-{{ attraction.get_field('icon') }}"></i></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+
+  </div>
+
+</div> <!-- .location-features__legend -->

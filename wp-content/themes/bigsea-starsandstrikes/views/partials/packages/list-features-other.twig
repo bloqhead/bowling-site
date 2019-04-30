@@ -1,0 +1,23 @@
+<div class="{{ class }}">
+    {% if package.get_field('features_food') %}
+        <div class="birthday__feature-group">
+            <h3>Food</h3>
+            <ul class="basic-list">
+                {% for food_feature in package.get_field('features_food') %}
+                    <li>{{ food_feature.text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if package.get_field('features_extra') %}
+        <div class="birthday__feature-group">
+            <h3>Extras</h3>
+            <ul class="basic-list">
+                {% for extra_feature in package.get_field('features_extra') %}
+                    <li>{{ extra_feature.text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>

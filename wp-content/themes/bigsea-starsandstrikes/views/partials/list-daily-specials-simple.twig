@@ -1,0 +1,17 @@
+<ul class="article-list">
+{% for current in dailySpecials %}
+  <li class="article-list__item">
+    <a class="article-list__link article-list__link--flexy" href="{{ current.special.link }}">
+      <h3 class="article-list__title">{{ current.special.name }}</h3>
+    {% for hours in current.special.get_field('hours') %}
+      <p class="article-list__hours">{{ hours.time_open }} - {{ hours.time_close }}</p>
+    {% endfor %}
+    </a>
+  </li>
+{% else %}
+  <li>
+    <h3>No Daily Specials found for {{ locationName }}</h3>
+    <p>Please check back again soon!</p>
+  </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<article class="post post-{{post.post_type}}" id="post-{{post.ID}}">
+		<header class="post__header">
+			<h1 class="post__title">{{post.title}}</h1>
+			<p class="post__meta">
+				{{ fn('bsd_posted_on', post) }}
+			</p>
+		</header>
+		<div class="post__content">
+			<p>{{post.content}}</p>
+		</div>
+		<footer class="post__footer">
+			{{ fn('bsd_entry_footer') }}
+		</footer>
+	</article>
+
+	{% include  "partials/comments.twig" %}
+
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

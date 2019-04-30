@@ -1,0 +1,221 @@
+//
+// Global Header
+//
+
+.masthead {
+
+}
+
+.top-bar {
+  background-color: $slate-blue;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  // site footer...in the mobile nav container
+
+  .site-footer {
+    background: linear-gradient(180deg, $slate-blue 0%, $light-navy 100%);
+
+    .inner {
+      display: block;
+    }
+
+    .pre-footer {
+      background: none;
+      padding: 18px;
+    }
+
+    .site-footer__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 22px -10px;
+    }
+
+    .btn {
+      width: calc(50% - 20px);
+      font-size: 10px !important;
+      padding: 10px;
+      margin: 0 5px !important;
+    }
+
+    .copyright {
+      display: none;
+    }
+  }
+}
+
+// simplified header for use in places
+// like the birthday landing page
+// (page-birthdays-landing.twig|php)
+
+.top-bar--simple {
+  position: relative;
+  height: 85px;
+
+  &:after, &:before {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    content: "";
+  }
+
+  &:before {
+    $i: 5px;
+    bottom: -#{$i};
+    z-index: 2;
+    height: $i;
+    background-color: $red;
+  }
+  
+  &:after {
+    $i: 40px;
+    bottom: -#{$i};
+    z-index: 1;
+    height: $i;
+    background-color: $light-navy;
+  }
+
+  .logo-link {
+    position: relative;
+    z-index: 3;
+    margin: 0 auto;
+  }
+}
+
+.menu-bar {
+  background-color: $light-navy;
+  font-size: 10px;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.menu--secondary {
+  text-transform: uppercase;
+}
+
+.menu--user-actions {
+  font-size: 11px;
+
+  li {
+    display: inline;
+
+    a, .btn {
+      display: inline-block;
+    }
+  }
+}
+
+.logo-link {
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 959px) {
+  .top-bar {
+    position: relative;
+    height: 50px;
+    padding: 15px;
+
+    .logo {
+      max-width: 172px;
+      transform: translateY(-2px);
+    }
+  }
+
+  .user-actions__desktop-selector {
+    display: none !important;
+  }
+
+  .user-actions__location {
+    padding-right: 0 !important;
+
+    i {
+      // annoying fix
+      transition-delay: -1s !important;
+      color: inherit !important;
+    }
+  }
+}
+
+@media ($bp-medium) {
+  .top-bar {
+    border-bottom: 3px solid $red;
+
+    &:not(.top-bar--simple) {
+      position: static;
+
+      .inner {
+        position: relative;
+  
+        > .menu {
+          max-width: 80%;
+          margin-left: auto;
+          text-align: right;
+  
+          > li > a {
+            text-align: center;
+          }
+        }
+      }
+
+      .logo-link {
+        position: absolute;
+        left: 0; top: 5px;
+      }
+    }
+
+    .logo-link {
+      width: 192px;
+    }
+  }
+
+  .top-bar--simple {
+    
+    .logo-link {
+      position: absolute;
+      left: 50%; top: 0;
+      transform: translateY(7px) translateX(-50%);
+    }
+  }
+
+  .menu--secondary {
+    font-size: 12px;
+    margin-left: auto;
+  }
+
+  .menu--information {
+
+  }
+
+  .menu--user-actions {
+    font-size: 16px;
+
+    li {
+
+      .btn {
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .menu-bar {
+    text-align: right;
+  }
+
+  .user-actions__mobile-selector {
+    display: none !important;
+  }
+}

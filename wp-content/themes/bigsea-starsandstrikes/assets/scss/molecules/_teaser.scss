@@ -1,0 +1,54 @@
+//
+// Teasers
+//
+
+.teaser {
+
+  .post-meta {
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: inherit;
+      cursor: text;
+    }
+  }
+}
+
+.teaser__header {
+
+}
+
+.teaser__title {
+  margin-bottom: 18px;
+}
+
+.teaser__content {
+
+}
+
+.teaser__thumbnail {
+  display: block;
+  height: auto;
+  margin-right: 20px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 480px) {
+  .teaser__content {
+    display: flex;
+    align-content: space-between;
+
+    .teaser__thumbnail {
+      width: 33.33%;
+    }
+
+    > p {
+      width: calc(100% - 33.33%);
+    }
+  }
+}
